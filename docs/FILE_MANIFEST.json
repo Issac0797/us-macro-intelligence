@@ -38,13 +38,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6868,
-      "sha256": "a30114efa9cebfb3bf4954a7bad4690b26d41ee602ce7ecb88393a7401ebf1e8"
+      "bytes": 6934,
+      "sha256": "90af0babe7b3c76dbed93f8e7e1bbb6589a3ce136e98d21ae09f1bd392a9cb43"
     },
     {
       "path": "README.zh-CN.md",
-      "bytes": 5819,
-      "sha256": "135e49b46b3383f71eeed98b1ad22aef8118fa05424e9af05902dae7be113493"
+      "bytes": 5908,
+      "sha256": "a71af29867d0b0b91cb8fe74f981cbdd790ff3481c9cd93c125785168f051f70"
     },
     {
       "path": "SECURITY.md",
@@ -523,8 +523,13 @@
     },
     {
       "path": "docs/ACCEPTANCE.md",
-      "bytes": 5997,
-      "sha256": "370cfb665471d95c1b010acc128b8cbdfc540e14fcc156d040cd514412b36c19"
+      "bytes": 7072,
+      "sha256": "45109b27f26006f53d292d88443d2ea61f2608ba61ab273dd0d1ebdf10fbc910"
+    },
+    {
+      "path": "docs/BROWSER_RELEASE_RESULTS.json",
+      "bytes": 806,
+      "sha256": "5f4343bc6885b332e3b9bf9336675435ef95ba8e55bda2204fbcbe75e45b7c23"
     },
     {
       "path": "docs/DATA_LICENSES.md",
@@ -538,8 +543,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 6087,
-      "sha256": "385e6e33bd7eee47b4229cdc47b02d6ce4756729a9bdebe2931d7b0c92fb4167"
+      "bytes": 6365,
+      "sha256": "535dfcd7afcb2f402bb8f76f1041050d3acdfcd566f4a364f34732b33f872e09"
     },
     {
       "path": "docs/FEATURE_COVERAGE.md",
@@ -548,8 +553,8 @@
     },
     {
       "path": "docs/ITERATION9_PUBLIC_RELEASE.md",
-      "bytes": 2474,
-      "sha256": "93aa63bcfb8a3eb6efd2495e4a2ed5f620fe6a5bebfaf03bc6829bc94c8d5806"
+      "bytes": 3424,
+      "sha256": "3e14f0b5971ff01854b0765cde25cb6a20740dc1c8953fa0a5a339fe3727189c"
     },
     {
       "path": "docs/LOCAL_DEVELOPMENT.md",
@@ -558,13 +563,23 @@
     },
     {
       "path": "docs/MAINTENANCE.md",
-      "bytes": 2945,
-      "sha256": "e21558451e58a4ac9931b3cfe40d5070cdf3578801c973534583d6fed564f1dc"
+      "bytes": 3056,
+      "sha256": "ec8e3f7212df0d13e89ac8b9be2593315c0281f81bb05c8c0ddee936cc3e1afc"
+    },
+    {
+      "path": "docs/PREVIEW_DEPLOYMENT.json",
+      "bytes": 3152,
+      "sha256": "1dbfde4b8f1328c7277b98aaa1d0614aff0dbdd462871afbd3abe1980ca57d22"
+    },
+    {
+      "path": "docs/PUBLIC_DEPLOYMENT.json",
+      "bytes": 2949,
+      "sha256": "c377ca6e59ce5590f082e8387c58e6ec06a1f1eb1c6a0a0c5ff979df131c1e0e"
     },
     {
       "path": "docs/RELEASE_CHECKLIST.md",
-      "bytes": 2139,
-      "sha256": "6624ce7b5702da94ff75a89e60ba49acac1e7dede3b4e19f1fa2a1d9cc7d514e"
+      "bytes": 2557,
+      "sha256": "50bb48951cb5b5442f4a239187b4656d6ba6ffc20f0e97df915b573bccc2705d"
     },
     {
       "path": "docs/RELEASE_NOTES_v0.1.0.md",
@@ -578,8 +593,8 @@
     },
     {
       "path": "docs/VALIDATION_RESULTS.json",
-      "bytes": 2932,
-      "sha256": "da2a83a1b7c608da819cc3e8e3ad15cc3c133919d1f41f9128c8fba0afb49621"
+      "bytes": 4307,
+      "sha256": "3fb5e4899ff079c0f6a5b19e3e81979e84f501ae1de67cc2db4e5813abd7d336"
     },
     {
       "path": "docs/dependency-licenses.json",
@@ -600,6 +615,11 @@
       "path": "docs/screenshots/release/four-linked-cursor-zh-light.jpg",
       "bytes": 175663,
       "sha256": "fd544a11f7f4c7a128267f7d24cceb57cbd0f6deed2a1aec668a59baa3f7816c"
+    },
+    {
+      "path": "docs/screenshots/release/production-dgs10-export.png",
+      "bytes": 97556,
+      "sha256": "e1fa175d19555d29a9bef44ce8a310cde6262011f5726682cf16f494ffa1e46a"
     },
     {
       "path": "docs/screenshots/workspace-linked-zoom.jpg",

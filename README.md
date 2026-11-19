@@ -4,7 +4,7 @@
 
 An independent US macroeconomic research terminal and a self-contained static showcase. Explore official observations, inspect transformations and compare the Treasury curve while preserving clear observation dates, source attribution and missing values.
 
-**v0.1.0 Public Preview — source release.** Online demo: **NOT DEPLOYED YET**. The static website is deployed separately through Cloudflare Pages Git Integration; no live backend is hosted. See [release status](docs/ITERATION9_PUBLIC_RELEASE.md) for actual verification results.
+**Public Preview** · [Online demo](https://us-macro-intelligence.pages.dev/) · [GitHub CI](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339). The static website uses Cloudflare Pages Git Integration; no live backend is hosted. See [release status](docs/ITERATION9_PUBLIC_RELEASE.md) for actual verification results.
 
 ![Static showcase — English light theme](docs/screenshots/overview-en-light.jpg)
 ![Four-panel workspace](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
@@ -27,7 +27,7 @@ No forecasting models or trading features are included in this release.
 Windows full terminal: Next.js / React / ECharts → FastAPI → PostgreSQL
 Static showcase:       Next.js static export → HTML + JS + reviewed JSON
 Data refresh (manual): original-agency sources → whitelist/schema → snapshot PR
-Deployment (later):    GitHub main → Cloudflare Pages Git Integration
+Automatic deployment:    GitHub main → Cloudflare Pages Git Integration
 ```
 
 The separate `showcase/` entry reuses the terminal presentation provider, chart theming, locale dictionaries and preferences through `scripts/release/sync-shared.mjs`. It has no API proxy, request cookies, server actions, database connection, background worker or private API key. Each public route exports a physical `index.html`; `404.html` preserves genuine unknown-route errors.

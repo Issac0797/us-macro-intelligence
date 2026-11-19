@@ -11,14 +11,16 @@
 | 数据许可与软件许可证 | PASS | 新增数据或依赖时重新审核，保留声明 |
 | 双语 README、截图、MIT、贡献与安全政策 | PASS | 上线后再填写真实体验链接 |
 | 本地测试、静态构建、路由、来源与配置保存 | PASS | 具体计数与限制见 ACCEPTANCE |
-| 跨 OS / 云端等效运行 | NOT TESTED | GitHub Ubuntu CI / Pages 上验证 |
-| 原创代码权利及 MIT 授权确认 | PARTIAL | 由项目所有者在批准发布时确认 |
+| 跨 OS / 云端等效运行 | PASS | Windows 公网克隆、GitHub Ubuntu quality、Cloudflare Linux 构建通过 |
+| 原创代码及 MIT 发布授权 | PASS | 所有者已明确授权独立仓库及网站发布；第三方数据和依赖保持各自许可 |
 | 公开仓库与网页的明确发布授权 | PASS | 2026-11-19 所有者明确批准；Cloudflare 账户连接与 GitHub App 授权仍由所有者完成 |
-| GitHub Public Repository 与规则集 | NOT TESTED | 授权后创建独立仓库，配置必需检查与私密报告 |
-| GitHub 托管 Actions 成功 | NOT TESTED | 首次推送后核对 quality 日志 |
-| Pages Git Integration / PR Preview / main 正式站 | NOT TESTED | 按 DEPLOYMENT 执行并保存实际 URL |
+| GitHub Public Repository 与分支保护 | PASS | 独立公开仓库、必需 quality/PR、管理员适用、禁止 force push 和删除 |
+| GitHub 私密漏洞报告 / Secret scanning 账户设置 | NOT TESTED | 尚未核实账户可用功能与启用状态 |
+| GitHub 托管 Actions 成功 | PASS | [quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)：325 项测试及全部检查通过 |
+| Pages Git Integration / main 正式站 | PASS | https://us-macro-intelligence.pages.dev/；生产 main 自动部署启用 |
+| Pages PR Preview | PASS | PR #1 自动生成预览；10 条 HTTPS 路由、404、数据及安全头通过，证据见 PREVIEW_DEPLOYMENT.json |
 | 失败构建保留旧版本及 Rollback | NOT TESTED | 授权上线后演练，不用猜测结果替代实测 |
-| 正式域名深层路由及响应头 | NOT TESTED | 验证八条路由、404、CSP/同源连接和安全响应头 |
-| 正式体验链接回填 | NOT TESTED | 验证 URL 后以 PR 更新双语 README |
+| 正式域名深层路由及响应头 | PASS | 10 条 HTTPS 路由、真实 404、CSP/同源连接与安全头已验证 |
+| 正式体验链接回填 | PASS | 已验证正式 URL 并回填双语 README，经 PR 发布 |
 
-不会因这些云端项尚未执行而擅自发布。后续批准应明确新的公开 GitHub 仓库、Cloudflare Pages Git Integration 和首次部署范围；保留原开发备份的私有状态。
+发布已获所有者明确授权。继续保留原开发备份的私有状态；未实测项不能因首次上线成功而标为 PASS。

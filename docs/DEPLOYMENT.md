@@ -1,6 +1,6 @@
 # Cloudflare Pages 免费部署与维护
 
-状态：配置已准备；未创建公开 GitHub 仓库、Cloudflare 项目或任何线上部署。以下涉及公开、推送和账户授权的步骤，必须在项目所有者明确批准这份候选版本后执行。
+状态（2026-11-19）：所有者已明确授权，独立[公开仓库](https://github.com/Issac0797/us-macro-intelligence)、[GitHub quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)及 [Pages 正式站](https://us-macro-intelligence.pages.dev/)已成功。Cloudflare 账户及 GitHub App 授权由所有者完成。首次部署采用 Git Integration，以下教程可用于复建与维护；PR Preview 和恢复演练的实测状态见 ACCEPTANCE。
 
 ## 发布前
 
@@ -13,7 +13,7 @@
 
 在 GitHub 创建一个新的公开空仓库，建议名称 `us-macro-intelligence`，默认分支 `main`。不要修改开发备份仓库的可见性。不要从旧开发仓库 fork、mirror 或 push `--all`。
 
-候选目录已包含独立本地 `main`，没有远端。核对目录和文件清单后，添加**你刚创建的新仓库**作为 `origin`，只推送 `main`。如果重新初始化，请先复核 `.gitignore` 和 `docs/FILE_MANIFEST.json`，不要在原工作区执行 `git add .`。
+当前公开代码已在独立仓库的 `main`，且 `origin` 指向新的公开仓库。复建时，核对目录和文件清单后，添加**你刚创建的新仓库**作为 `origin`，只推送 `main`。如果重新初始化，请先复核 `.gitignore` 和 `docs/FILE_MANIFEST.json`，不要在原工作区执行 `git add .`。
 
 启用 GitHub 私密漏洞报告、Secret scanning / Push protection（按账户可用功能）；配置 `main` 的规则集：必须 PR、至少一名 reviewer（适合协作时）、要求 `quality` 成功、禁止 force push / 删除分支，并限制绕过。原前后端测试仍属于必需检查。仅文档或网站变更也不应删除后端测试。
 
@@ -37,7 +37,7 @@
 
 不要填写 FRED Key、数据库 URL、Cloudflare API Token 或个人环境变量。构建脚本按 `showcase/package-lock.json` 自行 `npm ci`，同步仓库中七份展示代码和许可文件，然后构建、扫描。不会安装/启动 Python 后端，不下载宏观数据，不访问 PostgreSQL，不读取 `.env`。无需 Pages Functions、Worker、R2、D1 或付费附加产品。
 
-首次点击构建/部署即会创建可公开访问的网站；这是必须获得授权后才执行的步骤。成功后记录真实的 `https://<project>.pages.dev` 地址，访问并验证后，再通过 PR 更新双语 README 的在线体验地址。不要填写一个尚未验证的 URL。
+首次上线已获授权并成功完成：https://us-macro-intelligence.pages.dev/。已验证十条主要路由、真实 404、快照/许可字节一致及安全响应头。双语 README 通过 PR 更新正式链接；后续变更仍经必需 quality 门禁。
 
 ## PR 预览和正式更新
 
@@ -53,6 +53,6 @@
 
 截至 2026-11-18 核查，[Pages Free 限制](https://developers.cloudflare.com/pages/platform/limits/) 包括每月构建次数等配额；使用前以账户和官方页面的实时值为准。本项目只需静态 Pages 和默认 `pages.dev` 域名，不要求购买域名。避免启用付费服务，快照变更集中通过 PR 提交以控制构建次数。
 
-上线后必须检查正式 URL 的八个页面与真实 404、浏览器网络记录无本机 API、响应头生效、PR Preview、失败构建保留旧版、main 成功部署和回滚。将证据补入 [ACCEPTANCE](ACCEPTANCE.md)，把对应 NOT TESTED 改成 PASS 后才能宣称云端验收完成。
+上线后必须检查正式 URL 的十个页面与真实 404、浏览器网络记录无本机 API、响应头生效、PR Preview、失败构建保留旧版、main 成功部署和回滚。将证据补入 [ACCEPTANCE](ACCEPTANCE.md)，把对应 NOT TESTED 改成 PASS 后才能宣称云端验收完成。
 
 官方依据：[Build image / NODE_VERSION / SKIP_DEPENDENCY_INSTALL](https://developers.cloudflare.com/pages/configuration/build-image/)、[GitHub Integration](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/)、[Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/)、[Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/)、[Preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/)、[Rollbacks](https://developers.cloudflare.com/pages/configuration/rollbacks/)。

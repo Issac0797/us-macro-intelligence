@@ -1,0 +1,105 @@
+{
+  "checked_at_utc": "2026-11-19T01:01:51.081932+00:00",
+  "base_url": "https://us-macro-intelligence.pages.dev",
+  "status": "PASS",
+  "routes": 10,
+  "public_data_files": 4,
+  "unknown_route_404": true,
+  "security_headers": "PASS",
+  "snapshot_and_notice_bytes_match_audited_build": true,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 10178,
+      "sha256": "e51373333874d0a7fd423d31a9d921b6e467c4cae8d881dfd647b61c9d7906ba"
+    },
+    {
+      "path": "/inflation/",
+      "status": 200,
+      "bytes": 10725,
+      "sha256": "d6eb3229e1628550bae54af02c2ccb59f836e22af157ae9bffb18ca8c3124384"
+    },
+    {
+      "path": "/labor/",
+      "status": 200,
+      "bytes": 10701,
+      "sha256": "592742beb741a7ba9cf1a438fc06ffc3323ce46aa07aecd349c28e49892a78e5"
+    },
+    {
+      "path": "/yield-curve/",
+      "status": 200,
+      "bytes": 10746,
+      "sha256": "f23877cfc2d3a56465686e22120c82330fc0e0b3fa417ffc115c042d8d4c49c6"
+    },
+    {
+      "path": "/workspace/",
+      "status": 200,
+      "bytes": 10731,
+      "sha256": "0a80cd6d2ebf4d13f13f21261eae67fa1dc43eb9fb6eaaa2fcf60470dd8b02e1"
+    },
+    {
+      "path": "/analytics/",
+      "status": 200,
+      "bytes": 10731,
+      "sha256": "783a728c468149280418778b613956b10bff4d22421e35c80c7faed273abb08f"
+    },
+    {
+      "path": "/business-cycle/",
+      "status": 200,
+      "bytes": 10772,
+      "sha256": "4bbda5a7038399caee84c5a3158d42d7bd8b891c681c4267ac36284feff11d0b"
+    },
+    {
+      "path": "/fed/",
+      "status": 200,
+      "bytes": 10696,
+      "sha256": "f5901067bcc5f4d7462adac04c4a54c0a97ee089199497ad9ffc740313bc4234"
+    },
+    {
+      "path": "/sources/",
+      "status": 200,
+      "bytes": 10728,
+      "sha256": "a9487d70eca1f42b75e373eb49171314554eaf06ae6dcaa398b93d60979094e9"
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "bytes": 10715,
+      "sha256": "235f98371cd6440626ea5a21e10d88b2293e5922498529a05a4da2a672c8645a"
+    },
+    {
+      "path": "/data/snapshot.json",
+      "status": 200,
+      "bytes": 617295,
+      "sha256": "96d85fa859060e38f6df3bde5c4b483d65c26a94fd80ca31030cc1bb98fd8372",
+      "series": 13,
+      "records": 17192,
+      "is_live": false
+    },
+    {
+      "path": "/data/licenses.json",
+      "status": 200,
+      "bytes": 13518,
+      "sha256": "c327f546465fa62890a69463ff5981f1bccebc0e75d5cae8ea86af8ef45b45b4"
+    },
+    {
+      "path": "/data/snapshot.schema.json",
+      "status": 200,
+      "bytes": 5421,
+      "sha256": "843240b55d727219f694cce37f0acac14ccdf01b2c3bedcc374cc183deefa61a"
+    },
+    {
+      "path": "/data/third-party-notices.txt",
+      "status": 200,
+      "bytes": 384969,
+      "sha256": "8133b8ec945134fddaeed881a938dd645ef047ff284aab2d4744918d38de8b09"
+    },
+    {
+      "path": "/release-check-unknown-route/",
+      "status": 404,
+      "bytes": 7243,
+      "sha256": "fc9b0c8d83e12b9d317c4204fd12293be42f5cfa1174aabe481d2865813cc756"
+    }
+  ]
+}
