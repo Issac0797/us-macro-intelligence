@@ -9,6 +9,16 @@
 ![英文浅色总览](docs/screenshots/overview-en-light.jpg)
 ![四图工作区](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
 
+## 选择使用方式
+
+| 使用方式 | 是否需要自己的 FRED API key | 数据与功能 |
+| --- | --- | --- |
+| [在线体验](https://us-macro-intelligence.pages.dev/)或自行部署静态展示版 | 不需要 | 已审核历史快照、图表、搜索与导出；不实时更新 |
+| 本地完整版，使用默认 `fred_csv` | 不需要 | 从 FRED 公开 CSV 服务下载受支持的普通观测；元数据与修订研究能力有限 |
+| 本地完整版，使用 `fred_api` | **需要** | FRED API 观测与元数据，以及 ALFRED 历史版本/修订研究，具体取决于来源可用性 |
+
+**API 模式请自行申请并配置密钥。** 项目不附带或共享维护者的个人密钥。请使用自己的 FRED 账户申请，将密钥保存在本地后端配置中。公开演示站没有密钥输入入口；在 Cloudflare Pages 添加密钥也不会启用本地完整版功能。
+
 ## 功能与研究目标
 
 - 共用终端的分组导航、可选指标卡、历史图、指标简报和观测明细。
@@ -38,6 +48,8 @@ Windows 完整版：Next.js / React / ECharts → FastAPI → PostgreSQL
 需要 Node.js **24 LTS**、npm 和 Git；构建不需要 Python、PostgreSQL 或 API Key。
 
 ```powershell
+git clone https://github.com/Issac0797/us-macro-intelligence.git
+cd us-macro-intelligence
 npm.cmd run build:showcase
 npx.cmd --yes http-server@14.1.1 showcase/out -a 127.0.0.1 -p 3100
 ```
@@ -46,17 +58,53 @@ npx.cmd --yes http-server@14.1.1 showcase/out -a 127.0.0.1 -p 3100
 
 ## Windows 本地完整研究终端
 
-推荐 Docker Desktop（Linux containers）。已有 `.env` 时不要覆盖。
+需要 Git 和 Docker Desktop（Linux containers）。按上面的命令克隆仓库后，在项目根目录操作。已有 `.env` 时不要覆盖。
 
 ```powershell
 Copy-Item .env.example .env   # 仅在不存在时执行
-# 在 .env 中填写独立本地数据库口令。
-# 如需完整 API 元数据及 vintage 能力，填写自己的 FRED_API_KEY，设置 DATA_PROVIDER=fred_api。
+```
+
+编辑 `.env`，将 `POSTGRES_PASSWORD` 替换为独立的本地数据库口令。Docker Compose 会提供容器内的数据库连接；原生开发还需要按 [LOCAL_DEVELOPMENT](docs/LOCAL_DEVELOPMENT.md) 更新 `DATABASE_URL`。
+
+### 配置数据来源
+
+暂时不申请 API key，可以保留以下默认配置：
+
+```dotenv
+DATA_PROVIDER=fred_csv
+FRED_API_KEY=
+```
+
+如需完整 API 元数据与 ALFRED 研究功能：
+
+1. 登录自己的 FRED 账户，按 [FRED 官方密钥申请说明](https://fred.stlouisfed.org/docs/api/api_key.html)申请 key。
+2. 修改本地 `.env` 中已有的对应配置项：
+
+   ```dotenv
+   DATA_PROVIDER=fred_api
+   FRED_API_KEY=your_key_here
+   ```
+
+   将占位文字替换为自己的真实 key。数据库口令和 FRED API key 是两项不同的凭据。
+
+### 启动终端
+
+选择上述任一数据来源后，启动服务并下载数据：
+
+```powershell
 docker compose up --build -d --wait
 docker compose exec -T backend python -m app.sync --full
 ```
 
 访问 [研究终端](http://localhost:3000) 或 [API 文档](http://localhost:8000/docs)。`fred_csv` 是普通观测的显式替代路径，不能替代所有 ALFRED 与元数据功能。密钥只供后端读取。普通 `docker compose down` 保留命名数据卷。原生开发与完整测试步骤见 [LOCAL_DEVELOPMENT](docs/LOCAL_DEVELOPMENT.md)。
+
+### 密钥保护与常见问题
+
+- `.env` 已被 Git 忽略。仅提交空白/示例配置 `.env.example`；真实 key 不应放入前端代码、`NEXT_PUBLIC_*` 变量、截图、公开 issue 或静态托管设置中。
+- 提示 `FRED_API_KEY is required for fred_api`：填写自己的 key，或明确改用 `DATA_PROVIDER=fred_csv`。API 模式需要密钥，不会静默切换到 CSV。
+- 修改 `.env` 后，重新运行 `docker compose up --build -d --wait`，让后端容器读取新环境，再执行同步命令；原生启动则重启后端进程。
+- 密钥被拒绝或请求受限：检查自己的 FRED 账户、密钥和适用的 [API 使用条款](https://fred.stlouisfed.org/docs/api/terms_of_use.html)。拥有 key 不保证所有序列或历史版本均可获取。
+- 如密钥泄露，请通过 FRED 撤销/更换，并更新本地 `.env`；仅从最新提交中删除不足以保护密钥。详见 [SECURITY](SECURITY.md)。
 
 ## 数据来源、使用与版权
 
