@@ -1,7 +1,7 @@
 {
   "reviewed_on": "2026-11-19",
-  "publication_status": "AUTHORIZED — PREPARING FIRST PUSH",
-  "cloud_execution": "NOT TESTED",
+  "publication_status": "PUBLIC \u2014 GITHUB AND CLOUDFLARE PAGES",
+  "cloud_execution": "PARTIAL \u2014 initial production/HTTPS passed; preview and recovery exercises pending",
   "original_tests": {
     "frontend": {
       "passed": 63,
@@ -35,7 +35,8 @@
     "validated_html_links": 360,
     "source_manifest": "PASS",
     "http_route_tests": "PASS",
-    "unknown_route_404": "PASS"
+    "unknown_route_404": "PASS",
+    "public_internet_https_clone": "PASS"
   },
   "snapshots": {
     "status": "PASS",
@@ -82,7 +83,9 @@
       "workspace-linked-zoom.jpg",
       "yield-curve-zh-dark.jpg",
       "labor-mobile-zh-system.jpg"
-    ]
+    ],
+    "public_exports_and_persistence": "PASS \u2014 BROWSER_RELEASE_RESULTS.json",
+    "public_four_panel_cursor_zoom": "PARTIAL \u2014 full local run passed"
   },
   "cloudflare": {
     "mode": "Git Integration",
@@ -96,7 +99,25 @@
       "SKIP_DEPENDENCY_INSTALL": "true",
       "NEXT_TELEMETRY_DISABLED": "1"
     },
-    "deployment_created": false
+    "deployment_created": true,
+    "initial_production_deployment_id": "23907fdc-9656-49cb-a5b8-4cd6b51b5d19",
+    "production_url": "https://us-macro-intelligence.pages.dev/",
+    "build_status": "PASS",
+    "automatic_main_deployments": true,
+    "preview_branch_policy": "All non-Production branches",
+    "public_https_routes_snapshot_headers": "PASS",
+    "pr_preview": "NOT TESTED",
+    "rollback": "NOT TESTED",
+    "failed_build_retention": "NOT TESTED"
   },
-  "total_tests_passed": 325
+  "total_tests_passed": 325,
+  "github": {
+    "repository_url": "https://github.com/Issac0797/us-macro-intelligence",
+    "public": true,
+    "initial_commit": "15eaed4c7589edd24557610d79cdafb4b9989187",
+    "quality_status": "PASS",
+    "quality_run_url": "https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339",
+    "branch_protection": "PASS \u2014 strict quality/PR, admins included, no force push/deletion",
+    "private_vulnerability_reporting_and_secret_settings": "NOT TESTED"
+  }
 }

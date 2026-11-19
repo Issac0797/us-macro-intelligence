@@ -24,4 +24,4 @@
 
 ## 必须由所有者完成的首次上线验收
 
-确认最终代码授权和安全整改，明确允许公开仓库及网页；创建独立公开仓库与 Git Integration；验证 PR Preview、main 部署、失败保留、回滚、正式 URL、响应头和配额。将证据写回验收表。本轮只提供可审核的本地发布版本，未执行这些账户或发布动作。
+确认最终代码授权和安全整改，明确允许公开仓库及网页；创建独立公开仓库与 Git Integration；验证 PR Preview、main 部署、失败保留、回滚、正式 URL、响应头和配额。将证据写回验收表。独立公开仓库、GitHub quality 和首次 Pages 正式构建已成功；正式站为 https://us-macro-intelligence.pages.dev/。PR 预览与恢复演练以验收表记录的实际证据为准。

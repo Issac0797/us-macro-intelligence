@@ -10,12 +10,15 @@ Updated: 2026-11-19 (Asia/Shanghai). Owner authorization: publish the independen
 | Static build and routes | PASS locally | Node 24.22.3, ten public routes, real 404; no backend/DB/key needed; artifact scan retained |
 | Four-chart cursor and zoom | PASS locally | Actual Chrome test; mixed daily/monthly dates preserved and missing dates explicit; equal stable event counts |
 | OS System theme switching | NOT TESTED | Native Windows Settings was unresponsive; no simulated media preference passed off as OS evidence |
-| Remaining browser exports/search/persistence checks | PARTIAL | Code and unit/build checks passed; manual browser run was interrupted |
+| Public browser exports/search/persistence | PASS | Actual public Chrome session: Ctrl+K DGS10 to workspace, EN/ZH, light/current System and dark, custom four-panel save/reload; CSV/JSON 1,532 observations including 64 nulls equal audited data; PNG visually verified with source/time/terms footer |
 | Independent Git history/source scan | PASS before first push | New repository has no inherited history or tags; 258 staged files and all new Git blobs scanned against active/historical credentials; no match |
-| Public repository | NOT TESTED | Target: https://github.com/Issac0797/us-macro-intelligence ; creation/push pending |
-| Hosted GitHub Actions | NOT TESTED | Read-only pull_request workflow; disposable PostgreSQL only; no private keys or local database access |
-| Cloudflare Pages build / production URL | NOT TESTED | Git Integration required; production branch main; npm run build:showcase; output showcase/out |
-| PR Preview / public HTTPS routes / rollback | NOT TESTED | Must be verified after successful GitHub CI and authorized Cloudflare connection |
+| Public repository | PASS | https://github.com/Issac0797/us-macro-intelligence ; new root commit 15eaed4c7589edd24557610d79cdafb4b9989187; no inherited private history |
+| Hosted GitHub Actions | PASS | [325 tests and complete quality checks](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339); Ubuntu, disposable PostgreSQL only, no production secrets |
+| main protection | PASS | Strict quality check and PR required; force push/deletion forbidden; applies to admins |
+| Internet public clone build | PASS | Actual public HTTPS clone on Node 24.22.3, no .env/DB/FRED key; ten routes, 94 output files, 360 links |
+| Cloudflare Pages build / production URL | PASS | https://us-macro-intelligence.pages.dev/ ; Git Integration, main; successful initial production deployment 23907fdc-9656-49cb-a5b8-4cd6b51b5d19 |
+| Public HTTPS, routes, snapshot and headers | PASS | Ten routes, actual unknown-route 404, four data/notice files byte-identical to audited build; CSP and security headers verified; see PUBLIC_DEPLOYMENT.json |
+| PR Preview / rollback / failed-build retention | NOT TESTED | Preview branches enabled; actual PR preview and recovery exercises still pending |
 | Public release tag | NOT TESTED | v0.1.0 Public Preview planned after deployment verification |
 
 Code is MIT; agency data, source extracts and dependency licenses remain separate. Unknown data permissions fail closed. The website is a frozen snapshot, not a live research backend. See SECURITY_AUDIT.md, ACCEPTANCE.md, DATA_LICENSES.md and DEPLOYMENT.md for scope and procedures.

@@ -1,0 +1,20 @@
+{
+  "origin": "https://us-macro-intelligence.pages.dev/",
+  "status": "PASS",
+  "language_en_zh": "PASS",
+  "light_dark_current_system": "PASS",
+  "ctrl_k_dgs10_search_to_workspace": "PASS",
+  "four_panel_config_save_then_reload": "PASS",
+  "csv_and_json_observations_equal_audited_snapshot": 1532,
+  "preserved_nulls": 64,
+  "csv_source_and_timestamp": "PASS",
+  "workspace_json_four_panels": "PASS",
+  "png_visual_chart_snapshot_source_license_footer": "PASS",
+  "png_size": [
+    1114,
+    860
+  ],
+  "png_sha256": "e1fa175d19555d29a9bef44ce8a310cde6262011f5726682cf16f494ffa1e46a",
+  "operating_system_theme_switch": "NOT TESTED",
+  "public_four_panel_cursor_zoom": "PARTIAL \u2014 two visible charts at 2024-01-18 showed DGS10 4.14 and monthly CPI gap; full four-panel cursor/zoom verified locally"
+}

@@ -4,7 +4,7 @@
 
 独立的美国宏观经济研究终端，以及无需后端的静态展示版。项目以官方真实观测、明确的数据口径、可追溯来源和保留缺失值为基础，支持通胀、就业、国债曲线与政策历史研究。
 
-**v0.1.0 Public Preview 源码发布。在线体验：尚未部署。** 静态网站随后通过 Cloudflare Pages Git Integration 单独部署，不托管实时后端；实际状态见 [发布报告](docs/ITERATION9_PUBLIC_RELEASE.md)。
+**Public Preview** · [在线体验](https://us-macro-intelligence.pages.dev/) · [GitHub CI](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)。静态网站通过 Cloudflare Pages Git Integration 自动部署，不托管实时后端；实际状态见 [发布报告](docs/ITERATION9_PUBLIC_RELEASE.md)。
 
 ![英文浅色总览](docs/screenshots/overview-en-light.jpg)
 ![四图工作区](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
@@ -27,7 +27,7 @@
 Windows 完整版：Next.js / React / ECharts → FastAPI → PostgreSQL
 静态展示：      Next.js Static Export → HTML / JS / 已审核 JSON
 快照更新：      官方原始来源 → 许可白名单及 Schema → PR
-后续自动部署：  GitHub main → Cloudflare Pages Git Integration
+自动部署：  GitHub main → Cloudflare Pages Git Integration
 ```
 
 独立 `showcase/` 入口通过 `sync-shared.mjs` 复用原终端主题、国际化、展示 Provider 与偏好组件。静态版没有 API 代理、服务器 Cookie 请求、数据库访问或后台任务；不会请求本机 API。每条公开路由生成真实 `index.html`，并保留独立 `404.html`。
