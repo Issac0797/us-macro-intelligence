@@ -1,0 +1,108 @@
+{
+  "checked_at_utc": "2026-11-19T07:38:41.097764+00:00",
+  "base_url": "https://d1beb7df.us-macro-intelligence.pages.dev",
+  "status": "PASS",
+  "routes": 10,
+  "public_data_files": 4,
+  "unknown_route_404": true,
+  "security_headers": "PASS",
+  "snapshot_and_notice_bytes_match_audited_build": true,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 10178,
+      "sha256": "8467d0045b0bf981a12c25641ca1f3a5932e8a63def9768583bc37ed90640aa1"
+    },
+    {
+      "path": "/inflation/",
+      "status": 200,
+      "bytes": 10725,
+      "sha256": "c16c57ce4480f645662c35466ffd23f7810ab767d4d2b0789d4fd29c71e5d3d3"
+    },
+    {
+      "path": "/labor/",
+      "status": 200,
+      "bytes": 10701,
+      "sha256": "e706c2e476ae2e16add38b6589e5534fd65710936dc872ac3dd02a5f0ea59557"
+    },
+    {
+      "path": "/yield-curve/",
+      "status": 200,
+      "bytes": 10746,
+      "sha256": "4875ab19e884db447191c18a137cd946542f39cada83522796b3aaa9227dcbf0"
+    },
+    {
+      "path": "/workspace/",
+      "status": 200,
+      "bytes": 10731,
+      "sha256": "002d9670a5ca379f9236548cc185b74a375ce4cfbede225cb2ecdac02fab5768"
+    },
+    {
+      "path": "/analytics/",
+      "status": 200,
+      "bytes": 10731,
+      "sha256": "4aaf7c18db66b015fc7bbd5f859ddf67d13a181bdcc95ac12c093b89ae491b9c"
+    },
+    {
+      "path": "/business-cycle/",
+      "status": 200,
+      "bytes": 10772,
+      "sha256": "425defb253dac071dac7fea626912a4414bab95537f53464ba26e295f6dcea0b"
+    },
+    {
+      "path": "/fed/",
+      "status": 200,
+      "bytes": 10696,
+      "sha256": "20ae46f0f80852c54135b5929e4ae9519cfde3b3607cfbe0f33fa27dc6545f5a"
+    },
+    {
+      "path": "/sources/",
+      "status": 200,
+      "bytes": 10728,
+      "sha256": "c5205c2f4034194fd616ef006fe08a3c3a3759e5d7176b2705a252c975dedcb8"
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "bytes": 10715,
+      "sha256": "1026ce2edfc6195bb1a741170d2a7d3587a98f5c1fd2d7e16b1115ad03cd7f02"
+    },
+    {
+      "path": "/data/snapshot.json",
+      "status": 200,
+      "bytes": 617295,
+      "sha256": "96d85fa859060e38f6df3bde5c4b483d65c26a94fd80ca31030cc1bb98fd8372",
+      "series": 13,
+      "records": 17192,
+      "is_live": false
+    },
+    {
+      "path": "/data/licenses.json",
+      "status": 200,
+      "bytes": 13518,
+      "sha256": "c327f546465fa62890a69463ff5981f1bccebc0e75d5cae8ea86af8ef45b45b4"
+    },
+    {
+      "path": "/data/snapshot.schema.json",
+      "status": 200,
+      "bytes": 5421,
+      "sha256": "843240b55d727219f694cce37f0acac14ccdf01b2c3bedcc374cc183deefa61a"
+    },
+    {
+      "path": "/data/third-party-notices.txt",
+      "status": 200,
+      "bytes": 384969,
+      "sha256": "8133b8ec945134fddaeed881a938dd645ef047ff284aab2d4744918d38de8b09"
+    },
+    {
+      "path": "/release-check-unknown-route/",
+      "status": 404,
+      "bytes": 7243,
+      "sha256": "da47fc903556624be9b672ba293a86f80edb09ab895d4d5a40307edab860be91"
+    }
+  ],
+  "commit": "276bcb11e9b2e6a18f7c410decdf12db7ebaa89e",
+  "pull_request": "https://github.com/Issac0797/us-macro-intelligence/pull/1",
+  "deployment_id": "d1beb7df-8dae-4cb1-8619-6595b3bbb096"
+}

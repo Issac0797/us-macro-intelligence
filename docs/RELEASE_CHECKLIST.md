@@ -18,7 +18,7 @@
 | GitHub 私密漏洞报告 / Secret scanning 账户设置 | NOT TESTED | 尚未核实账户可用功能与启用状态 |
 | GitHub 托管 Actions 成功 | PASS | [quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)：325 项测试及全部检查通过 |
 | Pages Git Integration / main 正式站 | PASS | https://us-macro-intelligence.pages.dev/；生产 main 自动部署启用 |
-| Pages PR Preview | NOT TESTED | 非正式分支预览已启用，待实际 PR 构建验证 |
+| Pages PR Preview | PASS | PR #1 自动生成预览；10 条 HTTPS 路由、404、数据及安全头通过，证据见 PREVIEW_DEPLOYMENT.json |
 | 失败构建保留旧版本及 Rollback | NOT TESTED | 授权上线后演练，不用猜测结果替代实测 |
 | 正式域名深层路由及响应头 | PASS | 10 条 HTTPS 路由、真实 404、CSP/同源连接与安全头已验证 |
 | 正式体验链接回填 | PASS | 已验证正式 URL 并回填双语 README，经 PR 发布 |

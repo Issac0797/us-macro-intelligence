@@ -30,7 +30,7 @@ This table reports observed results, not intended cloud behavior. Status vocabul
 | GitHub-hosted Actions execution | PASS | [Hosted quality run](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339) passed all checks and 325 tests on Ubuntu with disposable PostgreSQL |
 | GitHub public clone over Internet | PASS | Actual HTTPS clone of public main, Node 24.22.3, no private env/key/database; static export and scans passed |
 | Cloudflare Pages build / main deployment | PASS | https://us-macro-intelligence.pages.dev/ ; Git Integration, automatic main builds; initial deployment 23907fdc-9656-49cb-a5b8-4cd6b51b5d19 |
-| PR preview deployment | NOT TESTED | All non-production branches enabled; actual PR preview still to verify |
+| PR preview deployment | PASS | PR #1 triggered Pages Git Integration; https://d1beb7df.us-macro-intelligence.pages.dev/ ; all ten HTTPS routes, 404, security headers and snapshot/notice byte checks passed; see PREVIEW_DEPLOYMENT.json |
 | Public cloud routing / headers / snapshot | PASS | Ten HTTPS routes, unknown-route 404, same-origin CSP, nosniff, and four public data/notice files byte-identical to audited build; see PUBLIC_DEPLOYMENT.json |
 | Failed cloud build retention / rollback | NOT TESTED | Documented procedure; no recovery exercise claimed |
 | Public release authorization | PASS | Owner explicitly authorized public repository first, then static deployment on 2026-11-19 |
