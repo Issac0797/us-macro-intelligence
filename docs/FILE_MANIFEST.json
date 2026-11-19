@@ -17,6 +17,11 @@
       "sha256": "af38474d5d744b446a81a2ec0e5aae5f6a636463e451060e2f131c6a2f436299"
     },
     {
+      "path": ".github/workflows/live.yml",
+      "bytes": 359,
+      "sha256": "61ec99f94c2d4ad68eaed7cd89115c38d2fd1e682b868b0f5ffbadb0728b6a9c"
+    },
+    {
       "path": ".gitignore",
       "bytes": 340,
       "sha256": "1efe5a3684ad75d41a37c5761d5c57e8116ed6d04ae9afccaf422d49205f37d9"
@@ -563,8 +568,8 @@
     },
     {
       "path": "docs/MAINTENANCE.md",
-      "bytes": 3106,
-      "sha256": "9dee62cec5a8ea48c3848eef0e2ca07ff30f5001d5cdb4f9154c6013fd2c2a9e"
+      "bytes": 3599,
+      "sha256": "3679c8f7e5dda951370a47c556809a33df1fd3bbdaedfc7cbc03d8e347c85fce"
     },
     {
       "path": "docs/PREVIEW_DEPLOYMENT.json",
@@ -1120,6 +1125,11 @@
       "path": "scripts/release/validate_snapshot.py",
       "bytes": 3196,
       "sha256": "b31fcc5ed7c676b14c8b7e0cd7ac87653676f127592706c63528ed1ca0c9d273"
+    },
+    {
+      "path": "scripts/release/verify_live.py",
+      "bytes": 2845,
+      "sha256": "a9b941c1c3fda2512ee64666f0e3c5aa8aeec431fd13768bb734a0d3c1d59128"
     },
     {
       "path": "scripts/release/write_manifest.py",

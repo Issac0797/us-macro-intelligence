@@ -1,0 +1,15 @@
+name: Live HTTPS verification
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live_https:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verify public production routes, snapshot and headers
+        run: python scripts/release/verify_live.py
