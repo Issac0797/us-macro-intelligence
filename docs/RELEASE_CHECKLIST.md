@@ -19,7 +19,7 @@
 | GitHub 托管 Actions 成功 | PASS | [quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)：325 项测试及全部检查通过 |
 | Pages Git Integration / main 正式站 | PASS | https://us-macro-intelligence.pages.dev/；生产 main 自动部署启用 |
 | Pages PR Preview | PASS | PR #1 自动生成预览；10 条 HTTPS 路由、404、数据及安全头通过，证据见 PREVIEW_DEPLOYMENT.json |
-| 失败构建保留旧版本及 Rollback | NOT TESTED | 授权上线后演练，不用猜测结果替代实测 |
+| 失败构建保留旧版本及 Rollback | PASS | 实测生产回滚、恢复和受控失败构建；正式域名保留最后成功页面与相同快照，正常构建命令已恢复 |
 | 正式域名深层路由及响应头 | PASS | 10 条 HTTPS 路由、真实 404、CSP/同源连接与安全头已验证 |
 | 正式体验链接回填 | PASS | 已验证正式 URL 并回填双语 README，经 PR 发布 |
 

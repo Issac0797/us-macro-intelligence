@@ -523,8 +523,8 @@
     },
     {
       "path": "docs/ACCEPTANCE.md",
-      "bytes": 7072,
-      "sha256": "45109b27f26006f53d292d88443d2ea61f2608ba61ab273dd0d1ebdf10fbc910"
+      "bytes": 7298,
+      "sha256": "a54d4db60780821f3f17d702bbaa6fef32ab68aea6e73f52ce965e287d5ab443"
     },
     {
       "path": "docs/BROWSER_RELEASE_RESULTS.json",
@@ -543,8 +543,8 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "bytes": 6365,
-      "sha256": "535dfcd7afcb2f402bb8f76f1041050d3acdfcd566f4a364f34732b33f872e09"
+      "bytes": 6512,
+      "sha256": "76aca2fc209c6d1cdd28774f3e528e209314cfcf8ced433e94fc9362c46067f8"
     },
     {
       "path": "docs/FEATURE_COVERAGE.md",
@@ -553,8 +553,8 @@
     },
     {
       "path": "docs/ITERATION9_PUBLIC_RELEASE.md",
-      "bytes": 3424,
-      "sha256": "3e14f0b5971ff01854b0765cde25cb6a20740dc1c8953fa0a5a339fe3727189c"
+      "bytes": 3581,
+      "sha256": "02a50b369e0a72d40ecf0d2184b1e2898d85e7e4ae4a99c9aabde3c7c5d9a385"
     },
     {
       "path": "docs/LOCAL_DEVELOPMENT.md",
@@ -563,8 +563,8 @@
     },
     {
       "path": "docs/MAINTENANCE.md",
-      "bytes": 3056,
-      "sha256": "ec8e3f7212df0d13e89ac8b9be2593315c0281f81bb05c8c0ddee936cc3e1afc"
+      "bytes": 3106,
+      "sha256": "9dee62cec5a8ea48c3848eef0e2ca07ff30f5001d5cdb4f9154c6013fd2c2a9e"
     },
     {
       "path": "docs/PREVIEW_DEPLOYMENT.json",
@@ -577,9 +577,14 @@
       "sha256": "c377ca6e59ce5590f082e8387c58e6ec06a1f1eb1c6a0a0c5ff979df131c1e0e"
     },
     {
+      "path": "docs/RECOVERY_RESULTS.json",
+      "bytes": 4803,
+      "sha256": "590cc63a257e9254906451af5ab89db7823ea730021d18c45eaf3d3ee306fad5"
+    },
+    {
       "path": "docs/RELEASE_CHECKLIST.md",
-      "bytes": 2557,
-      "sha256": "50bb48951cb5b5442f4a239187b4656d6ba6ffc20f0e97df915b573bccc2705d"
+      "bytes": 2629,
+      "sha256": "8c3544bcb0b8ddedbd66adab7be86d71842ca8634d75f450db5dfc35ebcbe640"
     },
     {
       "path": "docs/RELEASE_NOTES_v0.1.0.md",
@@ -593,8 +598,8 @@
     },
     {
       "path": "docs/VALIDATION_RESULTS.json",
-      "bytes": 4307,
-      "sha256": "3fb5e4899ff079c0f6a5b19e3e81979e84f501ae1de67cc2db4e5813abd7d336"
+      "bytes": 4500,
+      "sha256": "504c5192c6cd818b85863859e05dc5d40150411ae760424db91b35e42610e5b3"
     },
     {
       "path": "docs/dependency-licenses.json",

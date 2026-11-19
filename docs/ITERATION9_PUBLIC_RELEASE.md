@@ -19,7 +19,7 @@ Updated: 2026-11-19 (Asia/Shanghai). Owner authorization: publish the independen
 | Cloudflare Pages build / production URL | PASS | https://us-macro-intelligence.pages.dev/ ; Git Integration, main; successful initial production deployment 23907fdc-9656-49cb-a5b8-4cd6b51b5d19 |
 | Public HTTPS, routes, snapshot and headers | PASS | Ten routes, actual unknown-route 404, four data/notice files byte-identical to audited build; CSP and security headers verified; see PUBLIC_DEPLOYMENT.json |
 | PR Preview | PASS | PR #1 deployed https://d1beb7df.us-macro-intelligence.pages.dev/ ; all ten HTTPS routes, 404, headers, snapshot and notices passed |
-| Rollback / failed production-build retention | NOT TESTED | Production recovery exercises have not been performed |
+| Rollback / failed production-build retention | PASS | Actual production rollback and restore verified by immutable deployment HTML hashes; controlled production build failure retained successful HTML/workspace/snapshot; normal command restored. See RECOVERY_RESULTS.json |
 | Public release tag | NOT TESTED | v0.1.0 Public Preview planned after deployment verification |
 
 Code is MIT; agency data, source extracts and dependency licenses remain separate. Unknown data permissions fail closed. The website is a frozen snapshot, not a live research backend. See SECURITY_AUDIT.md, ACCEPTANCE.md, DATA_LICENSES.md and DEPLOYMENT.md for scope and procedures.
