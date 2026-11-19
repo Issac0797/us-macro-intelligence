@@ -13,7 +13,7 @@ Updated 2026-11-19 for the authorized independent source release. The original d
 | Private artifacts | PASS for exclusion | `.env`, `.local`, database storage/backups, logs, research settings, historical reports/screenshots, installed dependencies and old Git metadata are absent from the source candidate. |
 | Public snapshot | PASS | Original-agency permission whitelist, JSON Schema, attribution, coverage, dates, null handling and provenance checks. No database export, unreviewed series or personal research is included. |
 | Software dependencies | PASS within locked scope | npm and Python metadata/lock review; copyleft and attribution obligations retained separately. No known vulnerabilities reported by the local registry audits. See DEPENDENCIES.md. |
-| Cloud accounts / unseen remotes | NOT TESTED | No GitHub or Cloudflare account state, inaccessible branches, hosted artifacts or remote backups were audited. No claim is made about them. |
+| Cloud project / unseen remotes | PARTIAL | New public repository, required branch checks, enabled GitHub secret scanning/push protection/private reporting, Pages Git Integration and public output were verified. Other account resources, inaccessible branches and remote backups remain outside this audit. |
 
 ## Scope and method
 

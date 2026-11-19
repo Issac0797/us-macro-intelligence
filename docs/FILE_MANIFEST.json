@@ -48,8 +48,8 @@
     },
     {
       "path": "SECURITY.md",
-      "bytes": 1296,
-      "sha256": "d36c03aa41ac53a6157ace91cb81292af4bdca6c95999e07b01864959f8bb5d9"
+      "bytes": 1235,
+      "sha256": "e979e3615284b6f7066e7db4e94ca91d3fd76744edaa2047aab0e842ea4145f6"
     },
     {
       "path": "THIRD_PARTY_NOTICES.txt",
@@ -583,8 +583,8 @@
     },
     {
       "path": "docs/RELEASE_CHECKLIST.md",
-      "bytes": 2629,
-      "sha256": "8c3544bcb0b8ddedbd66adab7be86d71842ca8634d75f450db5dfc35ebcbe640"
+      "bytes": 2665,
+      "sha256": "acacf3930dbc0ce682d6b60b7ddaf3eec2dbd9a6530b0ddfc6de0179350d1db1"
     },
     {
       "path": "docs/RELEASE_NOTES_v0.1.0.md",
@@ -593,13 +593,13 @@
     },
     {
       "path": "docs/SECURITY_AUDIT.md",
-      "bytes": 6447,
-      "sha256": "4e8e06044add31e436ae004b97be37f33e640cebfc6706cff946969055b373b2"
+      "bytes": 6564,
+      "sha256": "a06991033d64a7b5537afbb7782687a672a25abdc0fede7dbda6395a5add7713"
     },
     {
       "path": "docs/VALIDATION_RESULTS.json",
-      "bytes": 4500,
-      "sha256": "504c5192c6cd818b85863859e05dc5d40150411ae760424db91b35e42610e5b3"
+      "bytes": 4564,
+      "sha256": "319566e2b25ec2cabad9b199b804c22ce6972eefa1893ff091a4e96c2bf30099"
     },
     {
       "path": "docs/dependency-licenses.json",

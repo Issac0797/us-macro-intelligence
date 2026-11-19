@@ -15,7 +15,7 @@
 | 原创代码及 MIT 发布授权 | PASS | 所有者已明确授权独立仓库及网站发布；第三方数据和依赖保持各自许可 |
 | 公开仓库与网页的明确发布授权 | PASS | 2026-11-19 所有者明确批准；Cloudflare 账户连接与 GitHub App 授权仍由所有者完成 |
 | GitHub Public Repository 与分支保护 | PASS | 独立公开仓库、必需 quality/PR、管理员适用、禁止 force push 和删除 |
-| GitHub 私密漏洞报告 / Secret scanning 账户设置 | NOT TESTED | 尚未核实账户可用功能与启用状态 |
+| GitHub 私密漏洞报告 / Secret scanning 账户设置 | PASS | 私密漏洞报告、Secret scanning 与 Push protection 均经 GitHub API 确认启用 |
 | GitHub 托管 Actions 成功 | PASS | [quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)：325 项测试及全部检查通过 |
 | Pages Git Integration / main 正式站 | PASS | https://us-macro-intelligence.pages.dev/；生产 main 自动部署启用 |
 | Pages PR Preview | PASS | PR #1 自动生成预览；10 条 HTTPS 路由、404、数据及安全头通过，证据见 PREVIEW_DEPLOYMENT.json |
