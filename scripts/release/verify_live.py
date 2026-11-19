@@ -37,7 +37,7 @@ def check(path):
             assert headers.get("x-content-type-options") == "nosniff", "Missing nosniff"
             assert "connect-src 'self'" in headers.get("content-security-policy", ""), "Missing same-origin CSP"
             if path == "/data/snapshot.json":
-                assert raw == (ROOT / "data/snapshot.json").read_bytes(), "Snapshot differs from reviewed source"
+                assert raw == (ROOT / "showcase/public/data/snapshot.json").read_bytes(), "Snapshot differs from reviewed source"
                 assert json.loads(raw)["is_live"] is False, "Snapshot is incorrectly live"
             if path in ROUTES:
                 assert b"US Macro Intelligence" in raw, "Missing site document"

@@ -1128,8 +1128,8 @@
     },
     {
       "path": "scripts/release/verify_live.py",
-      "bytes": 2845,
-      "sha256": "a9b941c1c3fda2512ee64666f0e3c5aa8aeec431fd13768bb734a0d3c1d59128"
+      "bytes": 2861,
+      "sha256": "6f2c66509cef9fb88dd8ce3ba2e3c36f2ba3ba513943c039590d9e68304e8f1d"
     },
     {
       "path": "scripts/release/write_manifest.py",
