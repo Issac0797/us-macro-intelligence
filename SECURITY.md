@@ -1,8 +1,8 @@
 # Security policy
 
-This is an unpublished release candidate. Security support initially covers the latest `main` revision only; there is no promised response SLA.
+This project is a public preview. Security support covers the latest `main` revision only; there is no promised response SLA.
 
-After the repository is created, use **Security → Advisories → Report a vulnerability** if private reporting is enabled. Before that channel exists, contact the project owner through an existing private channel. No public contact address is invented here. Do not disclose credentials or private evidence in an issue or PR.
+Use [GitHub private vulnerability reporting](https://github.com/Issac0797/us-macro-intelligence/security/advisories/new), or **Security → Advisories → Report a vulnerability**. Private reporting is enabled. Do not disclose credentials or private evidence in a public issue or PR.
 
 Provide a minimal reproduction, affected revision and impact. Redact API keys, connection strings, browser storage, paths and personal research. Avoid testing against anyone else's deployment.
 

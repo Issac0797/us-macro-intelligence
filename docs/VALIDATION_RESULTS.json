@@ -1,7 +1,7 @@
 {
   "reviewed_on": "2026-11-19",
   "publication_status": "PUBLIC \u2014 GITHUB AND CLOUDFLARE PAGES",
-  "cloud_execution": "PARTIAL \u2014 production, public HTTPS and PR preview passed; recovery exercises pending",
+  "cloud_execution": "PASS \u2014 production, HTTPS, PR preview, rollback/restore and failed production-build retention; browser/OS caveats listed separately",
   "original_tests": {
     "frontend": {
       "passed": 63,
@@ -107,9 +107,12 @@
     "preview_branch_policy": "All non-Production branches",
     "public_https_routes_snapshot_headers": "PASS",
     "pr_preview": "PASS",
-    "rollback": "NOT TESTED",
-    "failed_build_retention": "NOT TESTED",
-    "preview_url": "https://d1beb7df.us-macro-intelligence.pages.dev/"
+    "rollback": "PASS",
+    "failed_build_retention": "PASS",
+    "preview_url": "https://d1beb7df.us-macro-intelligence.pages.dev/",
+    "normal_build_command_restored": true,
+    "merge_triggered_production_deployment": "PASS",
+    "main_commit": "562157e0daa0b1c8a4675bb9a3d020d1671b5c07"
   },
   "total_tests_passed": 325,
   "github": {
@@ -119,7 +122,7 @@
     "quality_status": "PASS",
     "quality_run_url": "https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339",
     "branch_protection": "PASS \u2014 strict quality/PR, admins included, no force push/deletion",
-    "private_vulnerability_reporting_and_secret_settings": "NOT TESTED",
+    "private_vulnerability_reporting_and_secret_settings": "PASS \u2014 private reporting, secret scanning and push protection enabled",
     "pr_1_quality_run_url": "https://github.com/Issac0797/us-macro-intelligence/actions/runs/44480806804"
   }
 }

@@ -32,7 +32,7 @@ This table reports observed results, not intended cloud behavior. Status vocabul
 | Cloudflare Pages build / main deployment | PASS | https://us-macro-intelligence.pages.dev/ ; Git Integration, automatic main builds; initial deployment 23907fdc-9656-49cb-a5b8-4cd6b51b5d19 |
 | PR preview deployment | PASS | PR #1 triggered Pages Git Integration; https://d1beb7df.us-macro-intelligence.pages.dev/ ; all ten HTTPS routes, 404, security headers and snapshot/notice byte checks passed; see PREVIEW_DEPLOYMENT.json |
 | Public cloud routing / headers / snapshot | PASS | Ten HTTPS routes, unknown-route 404, same-origin CSP, nosniff, and four public data/notice files byte-identical to audited build; see PUBLIC_DEPLOYMENT.json |
-| Failed cloud build retention / rollback | NOT TESTED | Documented procedure; no recovery exercise claimed |
+| Failed production build retention / rollback | PASS | Live Pages rollback changed production HTML to the initial deployment; restore returned it to merged main. A controlled failing production build exited 1 while production HTML and snapshot stayed on the successful version. Normal npm command restored; see RECOVERY_RESULTS.json |
 | Public release authorization | PASS | Owner explicitly authorized public repository first, then static deployment on 2026-11-19 |
 
 See [FEATURE_COVERAGE](FEATURE_COVERAGE.md), [SECURITY_AUDIT](SECURITY_AUDIT.md), [DATA_LICENSES](DATA_LICENSES.md), [DEPLOYMENT](DEPLOYMENT.md), [RELEASE_CHECKLIST](RELEASE_CHECKLIST.md) and [MAINTENANCE](MAINTENANCE.md). Screenshots are in `docs/screenshots/` and the exact source-file inventory is [FILE_MANIFEST](FILE_MANIFEST.json).

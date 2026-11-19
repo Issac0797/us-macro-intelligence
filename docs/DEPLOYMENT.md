@@ -1,6 +1,6 @@
 # Cloudflare Pages 免费部署与维护
 
-状态（2026-11-19）：所有者已明确授权，独立[公开仓库](https://github.com/Issac0797/us-macro-intelligence)、[GitHub quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)及 [Pages 正式站](https://us-macro-intelligence.pages.dev/)已成功。Cloudflare 账户及 GitHub App 授权由所有者完成。首次部署采用 Git Integration，以下教程可用于复建与维护；PR Preview 和恢复演练的实测状态见 ACCEPTANCE。
+状态（2026-11-19）：所有者已明确授权，独立[公开仓库](https://github.com/Issac0797/us-macro-intelligence)、[GitHub quality](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)及 [Pages 正式站](https://us-macro-intelligence.pages.dev/)已成功。Cloudflare 账户及 GitHub App 授权由所有者完成。首次部署采用 Git Integration，以下教程可用于复建与维护；PR Preview、回滚和失败构建保留均已实测，证据见 ACCEPTANCE。
 
 ## 发布前
 
@@ -43,7 +43,7 @@
 
 同一仓库的受信任功能分支 PR 可生成 Pages Preview；在预览上核对图表、主题、语言、快照时间和来源后合并。Fork PR 可能不自动获得预览，应由维护者审核后建立受信任分支；不要为了预览引入 `pull_request_target` 执行外部代码。只有 `main` 更新正式网站。GitHub branch rules 负责合并门禁；Cloudflare Git Integration 不自动等待任意 GitHub CI，因此必须禁止未通过检查的直接推送。
 
-构建失败不会替换最后一次成功的生产部署。故障时先查看 Pages 构建日志和 GitHub `quality`；恢复上次已验证的 commit 或在 Pages 使用 Rollback。保留最后成功的部署记录。实际回滚和失败保留行为需要上线后演练，本轮未做云端实测。
+构建失败不会替换最后一次成功的生产部署。故障时先查看 Pages 构建日志和 GitHub `quality`；恢复上次已验证的 commit 或在 Pages 使用 Rollback。保留最后成功的部署记录。2026-11-19 已实测生产回滚、恢复与失败构建保留：正式页面哈希随回滚/恢复切换，受控失败构建不会替换成功版本；正常构建命令已还原，见 RECOVERY_RESULTS.json。
 
 ## 深层路由
 
