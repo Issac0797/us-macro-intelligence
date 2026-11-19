@@ -1,0 +1,2146 @@
+{
+  "reviewed_on": "2026-11-18",
+  "npm": [
+    {
+      "project": "frontend",
+      "name": "@alloc/quick-lru",
+      "version": "5.3.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@alloc/quick-lru/5.3.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@emnapi/runtime",
+      "version": "1.11.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@emnapi/runtime/1.11.3"
+    },
+    {
+      "project": "frontend",
+      "name": "tslib",
+      "version": "2.9.1",
+      "license": "0BSD",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.9.1"
+    },
+    {
+      "project": "frontend",
+      "name": "@exodus/bytes",
+      "version": "1.16.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@exodus/bytes/1.16.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/colour",
+      "version": "1.1.0",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/colour/1.1.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-darwin-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-darwin-arm64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-darwin-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-darwin-x64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-freebsd-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-freebsd-wasm32/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-darwin-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-arm",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-s390x",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/1.3.4"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-arm",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-arm/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-arm64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-ppc64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-ppc64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-riscv64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-riscv64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-s390x",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-s390x/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linux-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-x64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linuxmusl-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-wasm32/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-webcontainers-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-webcontainers-wasm32/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-win32-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-arm64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-win32-ia32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-ia32/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@img/sharp-win32-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-x64/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@jridgewell/gen-mapping",
+      "version": "0.3.13",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@jridgewell/gen-mapping/0.3.13"
+    },
+    {
+      "project": "frontend",
+      "name": "@jridgewell/remapping",
+      "version": "2.3.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@jridgewell/remapping/2.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@jridgewell/resolve-uri",
+      "version": "3.1.2",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@jridgewell/resolve-uri/3.1.2"
+    },
+    {
+      "project": "frontend",
+      "name": "@jridgewell/sourcemap-codec",
+      "version": "1.6.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/1.6.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@jridgewell/trace-mapping",
+      "version": "0.3.31",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@jridgewell/trace-mapping/0.3.31"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/env",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/env/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-darwin-arm64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-darwin-arm64/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-darwin-x64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-darwin-x64/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-linux-arm64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-linux-arm64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-linux-x64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-linux-x64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-x64-musl/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-win32-arm64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@next/swc-win32-x64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "@radix-ui/react-compose-refs",
+      "version": "1.1.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@radix-ui/react-compose-refs/1.1.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@radix-ui/react-slot",
+      "version": "1.5.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@radix-ui/react-slot/1.5.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@swc/helpers",
+      "version": "0.5.23",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@swc/helpers/0.5.23"
+    },
+    {
+      "project": "frontend",
+      "name": "tslib",
+      "version": "2.9.1",
+      "license": "0BSD",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.9.1"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/node",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/node/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-android-arm64",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-android-arm64/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-darwin-arm64",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-darwin-arm64/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-darwin-x64",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-darwin-x64/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-freebsd-x64",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-freebsd-x64/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-linux-arm-gnueabihf",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm-gnueabihf/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-linux-arm64-gnu",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm64-gnu/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-linux-arm64-musl",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-linux-arm64-musl/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-linux-x64-gnu",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-gnu/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-linux-x64-musl",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-linux-x64-musl/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-wasm32-wasi",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@emnapi/core",
+      "version": "1.11.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@emnapi/core/1.11.3"
+    },
+    {
+      "project": "frontend",
+      "name": "@emnapi/runtime",
+      "version": "1.11.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@emnapi/runtime/1.11.3"
+    },
+    {
+      "project": "frontend",
+      "name": "@emnapi/wasi-threads",
+      "version": "1.2.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@emnapi/wasi-threads/1.2.3"
+    },
+    {
+      "project": "frontend",
+      "name": "@napi-rs/wasm-runtime",
+      "version": "1.2.2",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@napi-rs/wasm-runtime/1.2.2"
+    },
+    {
+      "project": "frontend",
+      "name": "@tybys/wasm-util",
+      "version": "0.10.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tybys/wasm-util/0.10.3"
+    },
+    {
+      "project": "frontend",
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tslib/2.8.1"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-win32-arm64-msvc",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-win32-arm64-msvc/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/oxide-win32-x64-msvc",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/oxide-win32-x64-msvc/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tailwindcss/postcss",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@tailwindcss/postcss/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@tanstack/query-core",
+      "version": "5.107.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@tanstack/query-core/5.107.1"
+    },
+    {
+      "project": "frontend",
+      "name": "@tanstack/react-query",
+      "version": "5.107.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@tanstack/react-query/5.107.1"
+    },
+    {
+      "project": "frontend",
+      "name": "@types/node",
+      "version": "22.20.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@types/node/22.20.5"
+    },
+    {
+      "project": "frontend",
+      "name": "@types/react",
+      "version": "19.3.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@types/react/19.3.0"
+    },
+    {
+      "project": "frontend",
+      "name": "@types/react-dom",
+      "version": "19.3.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@types/react-dom/19.3.0"
+    },
+    {
+      "project": "frontend",
+      "name": "baseline-browser-mapping",
+      "version": "2.11.36",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/baseline-browser-mapping/2.11.36"
+    },
+    {
+      "project": "frontend",
+      "name": "bcp-47",
+      "version": "2.1.2",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/bcp-47/2.1.2"
+    },
+    {
+      "project": "frontend",
+      "name": "bcp-47-match",
+      "version": "2.0.3",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/bcp-47-match/2.0.3"
+    },
+    {
+      "project": "frontend",
+      "name": "caniuse-lite",
+      "version": "1.0.30001826",
+      "license": "CC-BY-4.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/caniuse-lite/1.0.30001826"
+    },
+    {
+      "project": "frontend",
+      "name": "class-variance-authority",
+      "version": "0.7.1",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/class-variance-authority/0.7.1"
+    },
+    {
+      "project": "frontend",
+      "name": "client-only",
+      "version": "0.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/client-only/0.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/clsx/2.1.1"
+    },
+    {
+      "project": "frontend",
+      "name": "csstype",
+      "version": "3.2.3",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/csstype/3.2.3"
+    },
+    {
+      "project": "frontend",
+      "name": "data-urls",
+      "version": "8.0.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/data-urls/8.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "decimal.js",
+      "version": "10.6.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/decimal.js/10.6.0"
+    },
+    {
+      "project": "frontend",
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/detect-libc/2.1.2"
+    },
+    {
+      "project": "frontend",
+      "name": "echarts",
+      "version": "6.1.0",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/echarts/6.1.0"
+    },
+    {
+      "project": "frontend",
+      "name": "enhanced-resolve",
+      "version": "5.26.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/enhanced-resolve/5.26.1"
+    },
+    {
+      "project": "frontend",
+      "name": "entities",
+      "version": "9.0.0",
+      "license": "BSD-2-Clause",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/entities/9.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "graceful-fs",
+      "version": "4.2.11",
+      "license": "ISC",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/graceful-fs/4.2.11"
+    },
+    {
+      "project": "frontend",
+      "name": "html-encoding-sniffer",
+      "version": "7.0.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/html-encoding-sniffer/7.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "is-alphabetical",
+      "version": "2.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/is-alphabetical/2.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "is-alphanumerical",
+      "version": "2.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/is-alphanumerical/2.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "is-decimal",
+      "version": "2.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/is-decimal/2.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "is-potential-custom-element-name",
+      "version": "1.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/is-potential-custom-element-name/1.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "jiti",
+      "version": "2.7.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/jiti/2.7.0"
+    },
+    {
+      "project": "frontend",
+      "name": "jsdom",
+      "version": "31.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/jsdom/31.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-android-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-android-arm64/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-darwin-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-darwin-arm64/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-darwin-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-darwin-x64/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-freebsd-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-freebsd-x64/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-linux-arm-gnueabihf",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-linux-arm64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-linux-arm64-gnu/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-linux-arm64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-linux-arm64-musl/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-linux-x64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-linux-x64-gnu/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-linux-x64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-linux-x64-musl/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-win32-arm64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-win32-arm64-msvc/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lightningcss-win32-x64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "optional": true,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lightningcss-win32-x64-msvc/1.33.0"
+    },
+    {
+      "project": "frontend",
+      "name": "lru-cache",
+      "version": "11.5.3",
+      "license": "BlueOak-1.0.0",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/lru-cache/11.5.3"
+    },
+    {
+      "project": "frontend",
+      "name": "lucide-react",
+      "version": "0.577.0",
+      "license": "ISC",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/lucide-react/0.577.0"
+    },
+    {
+      "project": "frontend",
+      "name": "magic-string",
+      "version": "1.4.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/magic-string/1.4.5"
+    },
+    {
+      "project": "frontend",
+      "name": "nanoid",
+      "version": "3.3.20",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/nanoid/3.3.20"
+    },
+    {
+      "project": "frontend",
+      "name": "next",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/next/16.4.6"
+    },
+    {
+      "project": "frontend",
+      "name": "postcss",
+      "version": "8.5.23",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/postcss/8.5.23"
+    },
+    {
+      "project": "frontend",
+      "name": "parse5",
+      "version": "8.1.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/parse5/8.1.1"
+    },
+    {
+      "project": "frontend",
+      "name": "parse5-parser-stream",
+      "version": "8.1.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/parse5-parser-stream/8.1.1"
+    },
+    {
+      "project": "frontend",
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/picocolors/1.1.1"
+    },
+    {
+      "project": "frontend",
+      "name": "postcss",
+      "version": "8.5.32",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/postcss/8.5.32"
+    },
+    {
+      "project": "frontend",
+      "name": "punycode",
+      "version": "2.3.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/punycode/2.3.1"
+    },
+    {
+      "project": "frontend",
+      "name": "react",
+      "version": "19.3.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/react/19.3.1"
+    },
+    {
+      "project": "frontend",
+      "name": "react-dom",
+      "version": "19.3.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/react-dom/19.3.1"
+    },
+    {
+      "project": "frontend",
+      "name": "saxes",
+      "version": "6.0.0",
+      "license": "ISC",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/saxes/6.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/scheduler/0.28.0"
+    },
+    {
+      "project": "frontend",
+      "name": "semver",
+      "version": "7.8.6",
+      "license": "ISC",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/semver/7.8.6"
+    },
+    {
+      "project": "frontend",
+      "name": "sharp",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/sharp/0.35.5"
+    },
+    {
+      "project": "frontend",
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "license": "BSD-3-Clause",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/source-map-js/1.2.2"
+    },
+    {
+      "project": "frontend",
+      "name": "styled-jsx",
+      "version": "5.1.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/styled-jsx/5.1.6"
+    },
+    {
+      "project": "frontend",
+      "name": "tailwind-merge",
+      "version": "3.7.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tailwind-merge/3.7.0"
+    },
+    {
+      "project": "frontend",
+      "name": "tailwindcss",
+      "version": "4.3.5",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tailwindcss/4.3.5"
+    },
+    {
+      "project": "frontend",
+      "name": "tapable",
+      "version": "2.3.3",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tapable/2.3.3"
+    },
+    {
+      "project": "frontend",
+      "name": "tldts",
+      "version": "7.5.4",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tldts/7.5.4"
+    },
+    {
+      "project": "frontend",
+      "name": "tldts-core",
+      "version": "7.5.4",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tldts-core/7.5.4"
+    },
+    {
+      "project": "frontend",
+      "name": "tough-cookie",
+      "version": "6.1.0",
+      "license": "BSD-3-Clause",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tough-cookie/6.1.0"
+    },
+    {
+      "project": "frontend",
+      "name": "tr46",
+      "version": "7.0.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/tr46/7.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "tslib",
+      "version": "2.3.0",
+      "license": "0BSD",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.3.0"
+    },
+    {
+      "project": "frontend",
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/typescript/5.9.3"
+    },
+    {
+      "project": "frontend",
+      "name": "undici",
+      "version": "8.12.4",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/undici/8.12.4"
+    },
+    {
+      "project": "frontend",
+      "name": "undici-types",
+      "version": "6.21.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/undici-types/6.21.0"
+    },
+    {
+      "project": "frontend",
+      "name": "w3c-xmlserializer",
+      "version": "6.0.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/w3c-xmlserializer/6.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "webidl-conversions",
+      "version": "8.0.1",
+      "license": "BSD-2-Clause",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/webidl-conversions/8.0.1"
+    },
+    {
+      "project": "frontend",
+      "name": "whatwg-mimetype",
+      "version": "5.0.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/whatwg-mimetype/5.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "whatwg-url",
+      "version": "17.3.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/whatwg-url/17.3.0"
+    },
+    {
+      "project": "frontend",
+      "name": "xml-name-validator",
+      "version": "5.0.0",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/xml-name-validator/5.0.0"
+    },
+    {
+      "project": "frontend",
+      "name": "xmlchars",
+      "version": "2.2.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/xmlchars/2.2.0"
+    },
+    {
+      "project": "frontend",
+      "name": "zrender",
+      "version": "6.1.0",
+      "license": "BSD-3-Clause",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/zrender/6.1.0"
+    },
+    {
+      "project": "showcase",
+      "name": "@emnapi/runtime",
+      "version": "1.11.3",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@emnapi/runtime/1.11.3"
+    },
+    {
+      "project": "showcase",
+      "name": "tslib",
+      "version": "2.9.1",
+      "license": "0BSD",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.9.1"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/colour",
+      "version": "1.1.0",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/colour/1.1.0"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-darwin-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-darwin-arm64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-darwin-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-darwin-x64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-freebsd-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-freebsd-wasm32/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-darwin-arm64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-darwin-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-darwin-x64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-arm",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-arm64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-ppc64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-riscv64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-s390x",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-s390x/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linux-x64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-arm64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-libvips-linuxmusl-x64/1.3.4"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-arm",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-arm/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-arm64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-ppc64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-ppc64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-riscv64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-riscv64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-s390x",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-s390x/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linux-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linux-x64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linuxmusl-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linuxmusl-arm64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-linuxmusl-x64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-wasm32/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-webcontainers-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-webcontainers-wasm32/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-win32-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-arm64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-win32-ia32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-ia32/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@img/sharp-win32-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@img/sharp-win32-x64/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/env",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/env/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-darwin-arm64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-darwin-arm64/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-darwin-x64",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-darwin-x64/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-linux-arm64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-linux-arm64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-arm64-musl/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-linux-x64-gnu",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-x64-gnu/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-linux-x64-musl",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-linux-x64-musl/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-win32-arm64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@next/swc-win32-x64-msvc",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@next/swc-win32-x64-msvc/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "@swc/helpers",
+      "version": "0.5.23",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/@swc/helpers/0.5.23"
+    },
+    {
+      "project": "showcase",
+      "name": "tslib",
+      "version": "2.9.1",
+      "license": "0BSD",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.9.1"
+    },
+    {
+      "project": "showcase",
+      "name": "@types/node",
+      "version": "22.19.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@types/node/22.19.1"
+    },
+    {
+      "project": "showcase",
+      "name": "@types/react",
+      "version": "19.2.7",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@types/react/19.2.7"
+    },
+    {
+      "project": "showcase",
+      "name": "@types/react-dom",
+      "version": "19.2.3",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/@types/react-dom/19.2.3"
+    },
+    {
+      "project": "showcase",
+      "name": "baseline-browser-mapping",
+      "version": "2.11.38",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/baseline-browser-mapping/2.11.38"
+    },
+    {
+      "project": "showcase",
+      "name": "caniuse-lite",
+      "version": "1.0.30001826",
+      "license": "CC-BY-4.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/caniuse-lite/1.0.30001826"
+    },
+    {
+      "project": "showcase",
+      "name": "client-only",
+      "version": "0.0.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/client-only/0.0.1"
+    },
+    {
+      "project": "showcase",
+      "name": "csstype",
+      "version": "3.2.4",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/csstype/3.2.4"
+    },
+    {
+      "project": "showcase",
+      "name": "detect-libc",
+      "version": "2.1.2",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/detect-libc/2.1.2"
+    },
+    {
+      "project": "showcase",
+      "name": "echarts",
+      "version": "6.1.0",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/echarts/6.1.0"
+    },
+    {
+      "project": "showcase",
+      "name": "lucide-react",
+      "version": "0.577.0",
+      "license": "ISC",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/lucide-react/0.577.0"
+    },
+    {
+      "project": "showcase",
+      "name": "nanoid",
+      "version": "3.3.20",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/nanoid/3.3.20"
+    },
+    {
+      "project": "showcase",
+      "name": "next",
+      "version": "16.4.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/next/16.4.6"
+    },
+    {
+      "project": "showcase",
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/picocolors/1.1.1"
+    },
+    {
+      "project": "showcase",
+      "name": "postcss",
+      "version": "8.5.23",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/postcss/8.5.23"
+    },
+    {
+      "project": "showcase",
+      "name": "react",
+      "version": "19.3.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/react/19.3.1"
+    },
+    {
+      "project": "showcase",
+      "name": "react-dom",
+      "version": "19.3.1",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/react-dom/19.3.1"
+    },
+    {
+      "project": "showcase",
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/scheduler/0.28.0"
+    },
+    {
+      "project": "showcase",
+      "name": "semver",
+      "version": "7.8.6",
+      "license": "ISC",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/semver/7.8.6"
+    },
+    {
+      "project": "showcase",
+      "name": "sharp",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "optional": true,
+      "dev": false,
+      "source": "https://registry.npmjs.org/sharp/0.35.5"
+    },
+    {
+      "project": "showcase",
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "license": "BSD-3-Clause",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/source-map-js/1.2.2"
+    },
+    {
+      "project": "showcase",
+      "name": "styled-jsx",
+      "version": "5.1.6",
+      "license": "MIT",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/styled-jsx/5.1.6"
+    },
+    {
+      "project": "showcase",
+      "name": "tslib",
+      "version": "2.3.0",
+      "license": "0BSD",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/tslib/2.3.0"
+    },
+    {
+      "project": "showcase",
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/typescript/5.9.3"
+    },
+    {
+      "project": "showcase",
+      "name": "undici-types",
+      "version": "6.21.0",
+      "license": "MIT",
+      "optional": false,
+      "dev": true,
+      "source": "https://registry.npmjs.org/undici-types/6.21.0"
+    },
+    {
+      "project": "showcase",
+      "name": "zrender",
+      "version": "6.1.0",
+      "license": "BSD-3-Clause",
+      "optional": false,
+      "dev": false,
+      "source": "https://registry.npmjs.org/zrender/6.1.0"
+    }
+  ],
+  "python": [
+    {
+      "name": "alembic",
+      "version": "1.20.1",
+      "license": "MIT",
+      "source": "Homepage, https://alembic.sqlalchemy.org"
+    },
+    {
+      "name": "annotated-doc",
+      "version": "0.0.6",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/fastapi/annotated-doc"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/annotated-types/annotated-types"
+    },
+    {
+      "name": "anyio",
+      "version": "4.16.0",
+      "license": "MIT",
+      "source": "Documentation, https://anyio.readthedocs.io/en/latest/"
+    },
+    {
+      "name": "beautifulsoup4",
+      "version": "4.15.0",
+      "license": "MIT License",
+      "source": "Download, https://www.crummy.com/software/BeautifulSoup/bs4/download/"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "license": "MPL-2.0",
+      "source": "https://github.com/certifi/python-certifi"
+    },
+    {
+      "name": "click",
+      "version": "8.5.1",
+      "license": "BSD-3-Clause",
+      "source": "Changes, https://click.palletsprojects.com/page/changes/"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "license": "License :: OSI Approved :: BSD License",
+      "source": "Homepage, https://github.com/tartley/colorama"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.162.5",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/fastapi/fastapi"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "license": "MIT",
+      "source": "https://github.com/python-hyper/h11"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "license": "BSD-3-Clause",
+      "source": "Documentation, https://www.encode.io/httpcore"
+    },
+    {
+      "name": "httptools",
+      "version": "0.9.0",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/MagicStack/httptools"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "license": "BSD-3-Clause",
+      "source": "Changelog, https://github.com/encode/httpx/blob/master/CHANGELOG.md"
+    },
+    {
+      "name": "icalendar",
+      "version": "7.3.0",
+      "license": "BSD-2-Clause",
+      "source": "Homepage, https://icalendar.readthedocs.io/en/stable/"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "license": "BSD-3-Clause",
+      "source": "Changelog, https://github.com/kjd/idna/blob/master/HISTORY.md"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/pytest-dev/iniconfig"
+    },
+    {
+      "name": "Mako",
+      "version": "1.4.3",
+      "license": "MIT",
+      "source": "Homepage, https://www.makotemplates.org/"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4",
+      "license": "BSD-3-Clause",
+      "source": "Donate, https://palletsprojects.com/donate"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.2",
+      "license": "Apache-2.0",
+      "source": "Homepage, https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "source": "Documentation, https://packaging.pypa.io/"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/pytest-dev/pluggy"
+    },
+    {
+      "name": "psycopg",
+      "version": "3.3.8",
+      "license": "LGPL-3.0-only",
+      "source": "Homepage, https://psycopg.org/"
+    },
+    {
+      "name": "psycopg-binary",
+      "version": "3.3.8",
+      "license": "LGPL-3.0-only",
+      "source": "Homepage, https://psycopg.org/"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.3",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/pydantic/pydantic"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.16.2",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/pydantic/pydantic-settings"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.4",
+      "license": "MIT",
+      "source": "https://github.com/pydantic/pydantic"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "license": "BSD-2-Clause",
+      "source": "Homepage, https://pygments.org"
+    },
+    {
+      "name": "pytest",
+      "version": "9.2.0",
+      "license": "MIT",
+      "source": "Changelog, https://docs.pytest.org/en/stable/changelog.html"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "4.0.0",
+      "license": "BSD-3-Clause",
+      "source": "Homepage, https://github.com/dateutil/dateutil"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4",
+      "license": "BSD-3-Clause",
+      "source": "Source, https://github.com/theskumar/python-dotenv"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "license": "MIT",
+      "source": "https://pyyaml.org/"
+    },
+    {
+      "name": "soupsieve",
+      "version": "4.1",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/facelessuser/soupsieve"
+    },
+    {
+      "name": "SQLAlchemy",
+      "version": "2.1.8",
+      "license": "MIT",
+      "source": "Homepage, https://www.sqlalchemy.org"
+    },
+    {
+      "name": "starlette",
+      "version": "1.10.0",
+      "license": "BSD-3-Clause",
+      "source": "Homepage, https://github.com/Kludex/starlette"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.5",
+      "license": "MIT",
+      "source": "Homepage, https://github.com/pydantic/typing-inspection"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "license": "PSF-2.0",
+      "source": "Bug Tracker, https://github.com/python/typing_extensions/issues"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.6",
+      "license": "Apache-2.0",
+      "source": "https://github.com/python/tzdata"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "license": "BSD-3-Clause",
+      "source": "Changelog, https://uvicorn.dev/release-notes"
+    },
+    {
+      "name": "watchfiles",
+      "version": "1.3.0",
+      "license": "MIT",
+      "source": "https://github.com/samuelcolvin/watchfiles"
+    },
+    {
+      "name": "websockets",
+      "version": "17.4",
+      "license": "BSD-3-Clause",
+      "source": "Homepage, https://github.com/python-websockets/websockets"
+    }
+  ]
+}

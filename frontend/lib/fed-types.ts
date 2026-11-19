@@ -1,0 +1,11 @@
+export type FedDocument={id:number;meeting_id:string;kind:string;source_url:string;published_at:string|null;precision:string;publication_evidence:string|null;status:string;content_hash:string;retrieved_at:string;content?:{paragraphs?:string[];text?:string};};
+export type FedDecision={meeting_id:string;lower:number;upper:number;change_bp:number|null;effective_date:string|null;vote_for:number|null;vote_against:number|null;dissent:string|null;source_url?:string};
+export type FedMeeting={id:string;start_date:string;end_date:string;source_url:string;coverage?:string;documents:FedDocument[];decision:FedDecision|null};
+export type FedOverview={recent:FedMeeting|null;next:FedMeeting|null;latest_statement:FedDocument|null;latest_sep:FedDocument|null;last_change:FedDecision|null;meetings:FedMeeting[];coverage:Record<string,number>;natural_release_validation:string};
+export type SepRow={variable:string;target_year:string;statistic:string;is_previous:boolean;value:number|null;low:number|null;high:number|null;raw_value:string;previous_release_value?:number|null;change?:number|null};
+export type SepResult={meeting_id:string;compare_to:string|null;available_dates:string[];items:SepRow[];comparison:SepRow[];aligned:SepRow[];documents:FedDocument[];note:string;alignment:string};
+export type DotRow={target_year:string;rate:number;participants:number};
+export type DotResult={items:DotRow[];comparison:DotRow[];participant_counts:Record<string,number>;note:string;coverage:string};
+export type FedDiff={left:FedDocument;right:FedDocument;method:string;topic_note:string;changes:{kind:string;before:string[];after:string[];tokens:{kind:string;text:string}[];topics:Record<string,string[]>}[]};
+export type RateResult={items:{series_id:string;source_url:string;points:{date:string;value:number|null}[];status:string}[];decisions:{items:FedDecision[];statistics:Record<string,number>;sample_count:number;classified_count:number;method:string};note:string};
+export type PolicySnapshot={meeting_id:string;mode:string;as_of:string;precision:string;coverage:string;cutoff_exclusive:string;documents:FedDocument[];decisions:FedDecision[];excluded_document_count:number;notes:string[];macro:{series_id:string;status:string;units?:string;points:{date:string;value:number|null;vintage_date:string}[];provenance?:{source_url:string}}[]};

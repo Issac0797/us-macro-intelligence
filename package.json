@@ -1,0 +1,12 @@
+{
+  "name": "us-macro-intelligence-release",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build:showcase": "node scripts/release/build-showcase.mjs",
+    "check:static": "node scripts/release/check-static.mjs"
+  }
+}

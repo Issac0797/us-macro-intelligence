@@ -1,0 +1,131 @@
+"use client";
+import {WorkspaceActions} from "./workspace-actions";
+import {requestMetadata} from "@/lib/query-client";
+import {useRevalidation} from "@/lib/use-revalidation";
+import {RefreshStatus} from "./refresh-status";
+import {useUI} from "./presentation-provider";
+import Link from 'next/link';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ResearchShell } from './research-shell';
+import { WorkspaceChart, type ChartHandle } from './workspace-chart';
+import { Button } from './ui/button';
+import { request, download, csv, today } from '@/lib/workspace-utils';
+import type { FedDocument, FedDecision, FedMeeting, FedOverview, SepResult, DotResult, FedDiff, RateResult, PolicySnapshot } from '@/lib/fed-types';
+const number = (n: number | null | undefined) => n == null ? 'Not Available' : Number(n).toLocaleString('en-US', { maximumFractionDigits: 3 });
+const timestamp = (d: FedDocument) => d.published_at ? (d.precision === 'DATE' ? new Date(d.published_at).toLocaleDateString('en-CA', { timeZone: 'America/New_York' }) + ' · DATE ONLY' : new Date(d.published_at).toLocaleString('en-GB', { timeZone: 'America/New_York' }) + ' America/New_York') : 'Publication time unknown';
+const names: Record<string, string> = { overview: 'Fed Policy Intelligence', meeting: 'FOMC Meeting', statements: 'Statement Comparison', projections: 'Economic Projections & Dot Plot', rates: 'Policy Rate Monitor', historical: 'Historical Policy Snapshot' };
+function Source({ doc }: {
+    doc: FedDocument;
+}) { const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const number=uiNumber; return <div className="fed-source"><a href={doc.source_url} target="_blank" rel="noreferrer">{tx(doc.kind.toUpperCase())} ↗</a><span>{doc.published_at ? uiDate(doc.published_at,'America/New_York',doc.precision!=='DATE')+' · '+(doc.precision==='DATE'?t('DATE ONLY'):'America/New_York') : t('Publication time unknown')} · {tx(doc.status)}</span><small>{t("Retrieved") + " "}{tx(doc.retrieved_at ? new Date(doc.retrieved_at).toISOString() : 'Not fetched')}{tx(doc.content_hash ? ' · SHA-256 ' + doc.content_hash.slice(0, 12) : '')}</small>{tx(doc.publication_evidence?.includes('review required') && <small className="amber">{t("Source publication time requires review")}<span lang="en" translate="no">{doc.publication_evidence}</span></small>)}</div>; }
+function Decision({ decision: d }: {
+    decision: FedDecision | null;
+}) { const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const number=uiNumber; return d ? <div className="fed-cards"><article><span>{t("OFFICIAL TARGET RANGE")}</span><strong>{tx(number(d.lower))} – {tx(number(d.upper))}<small> %</small></strong><p>{t("Announced") + " "}{tx(d.meeting_id)}</p></article><article><span>{t("CHANGE VS PREVIOUS MEETING")}</span><strong>{tx(number(d.change_bp))}<small>{" " + t("bp")}</small></strong><p>{t("Effective") + " "}{tx(d.effective_date || 'Not confirmed')}</p></article><article><span>{t("VOTING RECORD")}</span><strong>{tx(d.vote_for ?? '—')} / {tx(d.vote_against ?? '—')}</strong><p>{t("For / against \u00B7 official text")}</p></article></div> : <div className="workspace-warning">{t("Policy decision: Not Available. Future times and rates are not inferred.")}</div>; }
+function MeetingTable({ meetings }: {
+    meetings: FedMeeting[];
+}) { const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const number=uiNumber; return <div className="table-scroll"><table className="fed-table"><thead><tr><th>{t("Meeting dates")}</th><th>{t("Target range")}</th><th>{t("Change")}</th><th>{t("Effective date")}</th><th>{t("Documents")}</th><th>{t("Coverage")}</th></tr></thead><tbody>{tx(meetings.map(m => <tr key={m.id}><td><Link href={'/fed/meetings/' + m.id}>{tx(m.start_date)} → {tx(m.end_date)}</Link></td><td>{tx(m.decision ? `${number(m.decision.lower)} – ${number(m.decision.upper)} %` : 'Not Available')}</td><td>{tx(m.decision?.change_bp == null ? '—' : number(m.decision.change_bp) + ' bp')}</td><td>{tx(m.decision?.effective_date || 'Not confirmed')}</td><td>{tx(m.documents.length)}{" " + t("sources")}</td><td>{tx(m.coverage)}</td></tr>))}</tbody></table></div>; }
+function jsonExport(name: string, data: unknown) { download(name + '.json', JSON.stringify(data, null, 2), 'application/json'); }
+export function FedTerminal({ view, meetingId }: {
+    view: 'overview' | 'meeting' | 'statements' | 'projections' | 'rates' | 'historical';
+    meetingId?: string;
+}) {
+    const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const number=uiNumber;
+    const [overview, setOverview] = useState<FedOverview | null>(null), [result, setResult] = useState<unknown>(null), [error, setError] = useState(''), [busy, setBusy] = useState(true);
+    const [left, setLeft] = useState(''), [right, setRight] = useState(''), [topic, setTopic] = useState('All'), [mode, setMode] = useState('pre'), [asOf, setAsOf] = useState(''), [year, setYear] = useState('All'), [start, setStart] = useState('2024-01-01'), [end, setEnd] = useState(today()), [variable, setVariable] = useState('fed_funds'), [dotComparison, setDotComparison] = useState(true);
+    const chart = useRef<ChartHandle>(null);
+    const lastPath=useRef('');
+    const [refresh,refreshData]=useRevalidation(['fed/']);
+    const [lastFetch,setLastFetch]=useState<string|null>(null);
+    const [errorStatus,setErrorStatus]=useState(0);
+    useEffect(() => { const a = new AbortController(); setBusy(true); request<FedOverview>('fed/overview', 'GET', undefined, a.signal).then(o => { if(a.signal.aborted)return; setOverview(o); setError(''); setLastFetch(requestMetadata(o)?.fetchedAt||null); if(view==='overview')setBusy(false); if (view === 'statements') {
+        const ds = o.meetings.filter(m => m.documents.some(d => d.kind === 'statement' && d.status === 'VERIFIED'));
+        setLeft(v=>v || ds[1]?.id || '');
+        setRight(v=>v || ds[0]?.id || '');
+    }
+    else if (view === 'historical')
+        setLeft(v=>v || new URLSearchParams(window.location.search).get('meeting') || o.recent?.id || ''); }).catch(e => { if (!a.signal.aborted) {
+        if(e.lastGood){setOverview(e.lastGood);setLastFetch(requestMetadata(e.lastGood)?.fetchedAt||null)}setError(String(e.message));setErrorStatus(e.status||0);
+        setBusy(false);
+    } }); return () => a.abort(); }, [view, refresh]);
+    useEffect(() => {
+        if (!overview)
+            return;
+        let path = '';
+        if (view === 'meeting')
+            path = 'fed/meetings/' + meetingId;
+        if (view === 'statements') {
+            if (!left || !right)
+                return;
+            path = `fed/statements/compare?left=${left}&right=${right}`;
+        }
+        if (view === 'projections')
+            path = 'fed/projections' + (left ? '?meeting_id=' + left : '') + (right ? (left ? '&' : '?') + 'compare_to=' + right : '');
+        if (view === 'rates')
+            path = `fed/rates?start=${start}&end=${end}`;
+        if (view === 'historical') {
+            if (!left)
+                return;
+            path = `fed/historical-snapshot?meeting_id=${left}&mode=${mode}${asOf ? '&as_of=' + asOf : ''}`;
+        }
+        if (!path) {
+            setBusy(false);
+            return;
+        }
+        const a = new AbortController();
+        setBusy(true);
+        setError('');
+        if(lastPath.current!==path)setResult(null); lastPath.current=path;
+        const load = async () => { const data = await request(path, 'GET', undefined, a.signal); if(a.signal.aborted)return; if (view === 'projections') {
+            const p = data as SepResult;
+            const dots = await request<DotResult>(`fed/dot-plot?meeting_id=${p.meeting_id}${p.compare_to ? '&compare_to=' + p.compare_to : ''}`, 'GET', undefined, a.signal);
+            if(a.signal.aborted)return; setResult({ projections: p, dots });
+        }
+        else
+            setResult(data); setError(''); setLastFetch(requestMetadata(data)?.fetchedAt||null); setBusy(false); };
+        load().catch(e => { if (!a.signal.aborted) {
+            setError(e.message);setErrorStatus(e.status||0);
+            setBusy(false);
+        } });
+        return () => a.abort();
+    }, [overview, view, meetingId, left, right, mode, asOf, start, end]);
+    const meetings = overview?.meetings || [];
+    const statementDates = meetings.filter(m => m.documents.some(d => d.kind === 'statement' && d.status === 'VERIFIED')).map(m => m.id);
+    const choose = (label: string, value: string, set: (s: string) => void, options: string[], blank?: string) => <label className="workspace-field">{tx(label)}<select value={value} onChange={e => set(e.target.value)}>{tx(blank && <option value="">{tx(blank)}</option>)}{tx(options.map(d => <option key={d} value={d}>{tx(d)}</option>))}</select></label>;
+    const exportButton = <Button variant="outline" onClick={() => jsonExport('fed-' + view, result || overview)}>{t("Export research JSON")}</Button>;
+    const p = (result as {
+        projections: SepResult;
+        dots: DotResult;
+    } | null)?.projections;
+    const dot = (result as {
+        dots: DotResult;
+    } | null)?.dots;
+    const dotOption = useMemo(() => {
+        if (!dot || !p)
+            return {};
+        const years = Array.from(new Set([...dot.items, ...(dotComparison ? dot.comparison : [])].map(d => d.target_year))).sort();
+        const expand = (items: DotResult['items'], offset: number) => items.flatMap(d => Array.from({ length: d.participants }, (_, i) => [years.indexOf(d.target_year) + offset + (i - (d.participants - 1) / 2) * Math.min(.04, .36 / Math.max(1, d.participants - 1)), Number(d.rate)]));
+        return { xAxis: { type: 'value', min: -1, max: years.length, interval: 1, axisLabel: { formatter: (v: number) => years[v] || '' } }, yAxis: { type: 'value', name: 'Percent' }, tooltip: { trigger: 'item' }, series: [{ type: 'scatter', name: p.meeting_id, data: expand(dot.items, -.23), symbolSize: 4 }, ...(dotComparison ? [{ type: 'scatter', name: p.compare_to || 'Previous', data: expand(dot.comparison, .23), symbolSize: 4 }] : [])], dataZoom: [] };
+    }, [dot, p, dotComparison]);
+    const projectionOption = useMemo(() => { if (!p)
+        return {}; const cur = p.items.filter(r => r.variable === variable && r.statistic === 'median' && !r.is_previous); const prev = p.comparison.filter(r => r.variable === variable && r.statistic === 'median' && !r.is_previous); const years = Array.from(new Set([...cur, ...prev].map(r => r.target_year))).sort(); return { xAxis: { type: 'category', data: years }, yAxis: { type: 'value', name: 'Percent' }, series: [{ type: 'line', name: p.meeting_id, data: years.map(y => cur.find(r => r.target_year === y)?.value ?? null), connectNulls: false }, { type: 'line', name: p.compare_to || 'Previous', data: years.map(y => prev.find(r => r.target_year === y)?.value ?? null), connectNulls: false }], dataZoom: [] }; }, [p, variable]);
+    return <ResearchShell advanced title={tx(names[view])} description={t("Official Federal Reserve materials, transparent comparisons and historically available macro evidence.")}><nav className="fed-nav" aria-label={t("Fed Policy navigation")}>{tx([['/fed', 'Overview / Meetings'], ['/fed/statements', 'Statements'], ['/fed/projections', 'SEP / Dot Plot'], ['/fed/rates', 'Policy Rates'], ['/fed/historical', 'Historical Policy']].map(([url, label]) => <Link key={url} href={url}>{tx(label)}</Link>))}</nav>
+ {view==='rates'&&<WorkspaceActions seriesIds={['DFEDTARL','DFEDTARU','EFFR','DFF']} start={start} end={end}/>}<div className="fed-heading"><span>{t("FEDERAL RESERVE \u00B7 OFFICIAL SOURCE RESEARCH")}</span><Button variant="outline" disabled={busy} onClick={() => refreshData()}>{t("Refresh")}</Button></div>
+ {tx(view === 'statements' && <div className="fed-controls">{tx(choose('Earlier statement', left, setLeft, statementDates))}{tx(choose('Later statement', right, setRight, statementDates))}{tx(choose('Rule-based topic', topic, setTopic, ['All', 'Economic Activity', 'Labor Market', 'Inflation', 'Policy Decision', 'Balance Sheet']))}<Button variant="outline" onClick={() => { const i = statementDates.indexOf(right); setLeft(statementDates[i + 1] || left); }}>{t("Compare previous meeting")}</Button></div>)}
+ {tx(view === 'projections' && <div className="fed-controls">{tx(choose('SEP release', left, setLeft, p?.available_dates || [], 'Latest available'))}{tx(choose('Compare release', right, setRight, p?.available_dates || [], 'Previous available'))}{tx(choose('Projection variable', variable, setVariable, ['fed_funds', 'gdp', 'unemployment', 'pce', 'core_pce']))}</div>)}
+ {tx(view === 'rates' && <div className="fed-controls"><label className="workspace-field">{t("Start")}<input type="date" value={start} onChange={e => setStart(e.target.value)}/></label><label className="workspace-field">{t("End")}<input type="date" value={end} onChange={e => setEnd(e.target.value)}/></label><Link href="/workspace">{t("Open Chart Workspace \u2192")}</Link></div>)}
+ {tx(view === 'historical' && <div className="fed-controls">{tx(choose('FOMC meeting', left, setLeft, meetings.filter(m => m.decision).map(m => m.id)))}<label className="workspace-field">{t("Research mode")}<select value={mode} onChange={e => { setMode(e.target.value); setAsOf(''); }}><option value="pre">{t("Pre-Decision \u00B7 previous full day")}</option><option value="post">{t("Post-Decision Review")}</option></select></label><label className="workspace-field">{t("Optional research cutoff")}<input type="date" value={asOf} onChange={e => setAsOf(e.target.value)}/></label></div>)}
+ <RefreshStatus cached={requestMetadata(view==='overview'?overview:result)?.cacheHit} statusCode={errorStatus} empty={view==='overview'&&!!overview&&!overview.meetings.length} busy={busy} error={error} hasData={view==='overview'?!!overview:!!result} lastFetch={lastFetch} retry={()=>refreshData()}/>
+ {tx(busy && !(view==='overview'?overview:result) ? <div className="workspace-loading skeleton" role="status">{t("Loading official policy research\u2026")}</div> : <>
+ {view === 'overview' && overview && <><div className="fed-intro"><div><span className="eyebrow">{t("LATEST POLICY MEETING")}</span><h2>{tx(overview.recent?.id || 'Not Available')}</h2><Link href={'/fed/meetings/' + overview.recent?.id}>{t("Open decision & source evidence \u2192")}</Link></div><div><span className="eyebrow">{t("NEXT CONFIRMED MEETING")}</span><h2>{tx(overview.next?.start_date)} — {tx(overview.next?.end_date)}</h2><p>{t("Publication time: unknown until officially confirmed")}</p></div></div><Decision decision={overview.recent?.decision || null}/><p className="fed-note">{t("Last policy change:") + " "}{tx(overview.last_change?.meeting_id || 'Not Available')} · {tx(number(overview.last_change?.change_bp))}{" " + t("bp. Material coverage") + " "}{tx(Object.entries(overview.coverage).map(([s, n]) => `${s}: ${n}`).join(' · '))}.</p><div className="fed-two">{tx(overview.latest_statement && <Source doc={overview.latest_statement}/>)}{tx(overview.latest_sep && <Source doc={overview.latest_sep}/>)}</div><div className="fed-section-heading"><h2>{t("Meeting archive \u00B7 2024\u20132026")}</h2>{tx(choose('Year', year, setYear, ['All', '2026', '2025', '2024']))}</div><MeetingTable meetings={meetings.filter(m => year === 'All' || m.id.startsWith(year))}/><p className="fed-note">{t("Natural release monitor:") + " "}{tx(overview.natural_release_validation)}{t(". Retrospective ingestion does not complete natural-release validation.")}</p></>}
+ {view === 'meeting' && result && (() => { const m = result as FedMeeting; return <><h2>{tx(m.start_date)} — {tx(m.end_date)}</h2><Decision decision={m.decision}/>{m.decision?.dissent && <div className="workspace-warning" lang="en" translate="no"><p className="original-document-label">{t("Original English Document")}</p>{m.decision.dissent}</div>}<div className="fed-nav"><Link href={'/fed/historical?meeting=' + m.id}>{t("Historical policy research \u2192")}</Link><Link href="/fed/statements">{t("Compare statements \u2192")}</Link></div><div className="fed-document-grid">{tx(m.documents.map(d => <article key={d.id}><Source doc={d}/>{tx(d.content?.paragraphs ? <><p className="original-document-label">{t("Original English Document")}</p><div className="fed-prose" lang="en" translate="no">{tx(d.content.paragraphs.map((s, i) => <p key={i}>{s}</p>))}</div></> : <details><summary>{t("Stored document text / evidence")}</summary><p className="original-document-label">{t("Original English Document")}</p><p className="fed-prose" lang="en" translate="no">{d.content?.text || t("Not Available")}</p></details>)}</article>))}</div><p className="fed-note">{t("Decision date") + " "}{tx(m.id)}{t("; effective date") + " "}{tx(m.decision?.effective_date || 'unknown')}{t(". Document publication dates are independent.")}</p>{exportButton}</>; })()}
+ {view === 'statements' && result && (() => { const d = result as FedDiff; return <><div className="fed-two"><Source doc={d.left}/><Source doc={d.right}/></div><p className="fed-note">{tx(d.method)} {tx(d.topic_note)}</p>{d.changes.filter(c => topic === 'All' || c.topics[topic]).map((c, i) => <section className={'fed-diff ' + c.kind} key={i}><div className="fed-section-heading"><span>{tx(c.kind.toUpperCase())}</span><small>{tx(Object.entries(c.topics).map(([k, v]) => t(k) + ' [' + v.join(', ') + ']').join(' · '))}</small></div><p className="original-document-label">{t("Original English Document")}</p><div className="fed-two" lang="en" translate="no"><div>{tx(c.before.map((s, j) => <p key={j}>{s}</p>))}</div><div>{tx(c.after.map((s, j) => <p key={j}>{s}</p>))}</div></div><details open={c.kind !== 'unchanged'}><summary>{t("Inline token diff")}</summary><p className="fed-inline" lang="en" translate="no">{tx(c.tokens.map((t, j) => <span key={j} className={'token-' + t.kind}>{t.text}</span>))}</p></details></section>)}<div className="workspace-exports">{tx(exportButton)}<Button variant="outline" onClick={() => download('statement-comparison.txt', d.changes.map(c => c.kind + '\nBEFORE\n' + c.before.join('\n\n') + '\nAFTER\n' + c.after.join('\n\n')).join('\n\n'))}>{t("Export text comparison")}</Button></div></>; })()}
+ {view === 'projections' && p && dot && <><div className="workspace-warning">{tx(p.note)}</div><div className="fed-two">{tx(p.documents.map(d => <Source key={d.id} doc={d}/>))}</div><WorkspaceChart ref={chart} title={tx(variable === 'fed_funds' ? 'Federal funds rate · participant median path' : variable + ' · SEP median projections')} footnote={t("Source: Federal Reserve SEP tables \u00B7 percent \u00B7 exact target-year alignment \u00B7 no interpolation")} label={t("SEP median projection comparison")} option={projectionOption}/><div className="workspace-exports"><Button variant="outline" onClick={() => chart.current?.exportPng()}>{t("Download projection PNG")}</Button><Button variant="outline" onClick={() => download('sep-projections.csv', csv([['release', 'variable', 'target_year', 'statistic', 'previous_row', 'median', 'low', 'high', 'source'], ...p.items.map(r => [p.meeting_id, r.variable, r.target_year, r.statistic, r.is_previous, r.value, r.low, r.high, p.documents[0]?.source_url])]), 'text/csv')}>{t("Download SEP CSV")}</Button>{tx(exportButton)}</div><p className="fed-note">{tx(p.alignment)}</p><div className="table-scroll"><table className="fed-table"><thead><tr><th>{t("Variable")}</th><th>{t("Target year")}</th><th>{t("Median")}</th><th>{t("Previous release")}</th><th>{t("Change pp")}</th><th>{t("Central tendency")}</th><th>{t("Range")}</th></tr></thead><tbody>{tx(p.aligned.filter(r => r.statistic === 'median').map(r => <tr key={r.variable + r.target_year}><td>{tx(r.variable)}</td><td>{tx(r.target_year)}</td><td>{tx(number(r.value))}</td><td>{tx(number(r.previous_release_value))}</td><td>{tx(number(r.change))}</td>{tx(['central_tendency', 'range'].map(s => { const x = p.items.find(a => a.variable === r.variable && a.target_year === r.target_year && a.statistic === s && !a.is_previous); return <td key={s}>{tx(x?.low == null ? 'Not Available' : `${number(x.low)} – ${number(x.high)}`)}</td>; }))}</tr>))}</tbody></table></div><h2 className="fed-section-title">{t("Anonymous participant dot distributions")}</h2><p className="fed-note">{tx(Object.entries(dot.participant_counts).map(([y, n]) => t('{p0}: {p1} participants',{p0:t(y),p1:n})).join(' · '))}{t(". Blank source cells produce no dots. Anonymous points cannot identify members.")}</p><label className="workspace-check"><input type="checkbox" checked={dotComparison} onChange={e => setDotComparison(e.target.checked)}/>{t("Compare dot distributions with selected earlier SEP")}</label><DotChart option={dotOption} dot={dot} release={p.meeting_id}/></>}
+ {view === 'rates' && result && (() => { const r = result as RateResult; return <><WorkspaceChart ref={chart} title={t("Policy target bounds & effective federal funds rates")} footnote={t("Source: FRED \u00B7 DFEDTARL / DFEDTARU are bounds; EFFR / DFF are observed rates \u00B7 Percent")} label={t("Policy target bounds and effective rates")} option={{ xAxis: { type: 'time' }, yAxis: { type: 'value', name: 'Percent' }, series: r.items.map(s => ({ name: s.series_id, type: 'line', step: s.series_id.startsWith('DFED') ? 'end' : false, showSymbol: false, connectNulls: false, data: s.points.map(p => [p.date, p.value]), markLine: s.series_id === 'DFEDTARU' ? { symbol: 'none', silent: true, label: { show: false }, lineStyle: { opacity: .15 }, data: r.decisions.items.map(d => ({ xAxis: d.meeting_id })) } : undefined })) }}/><p className="fed-note">{tx(r.note)}</p><div className="fed-cards">{tx(['hiking', 'cutting', 'holding'].map(k => <article key={k}><span>{tx(k.toUpperCase())}</span><strong>{tx(r.decisions.statistics[k] || 0)}</strong><p>{t("Official meeting decisions \u00B7") + " "}{tx(start)} → {tx(end)}</p></article>))}</div><p className="fed-note">{tx(r.decisions.method)}{" " + t("Classified") + " "}{tx(r.decisions.classified_count)} / {tx(r.decisions.sample_count)}{" " + t("meetings.")}</p><div className="table-scroll"><table className="fed-table"><thead><tr><th>{t("Decision date")}</th><th>{t("Effective date")}</th><th>{t("Lower %")}</th><th>{t("Upper %")}</th><th>{t("Change bp")}</th></tr></thead><tbody>{tx(r.decisions.items.map(d => <tr key={d.meeting_id}><td><Link href={'/fed/meetings/' + d.meeting_id}>{tx(d.meeting_id)}</Link></td><td>{tx(d.effective_date || 'Not confirmed')}</td><td>{tx(number(d.lower))}</td><td>{tx(number(d.upper))}</td><td>{tx(number(d.change_bp))}</td></tr>))}</tbody></table></div><div className="workspace-exports"><Button variant="outline" onClick={() => chart.current?.exportPng()}>{t("Download rate chart PNG")}</Button><Button variant="outline" onClick={() => download('policy-rates.csv', csv([['series', 'date', 'percent', 'source'], ...r.items.flatMap(s => s.points.map(p => [s.series_id, p.date, p.value, s.source_url]))]), 'text/csv')}>{t("Download rates CSV")}</Button>{tx(exportButton)}</div></>; })()}
+ {view === 'historical' && result && (() => { const h = result as PolicySnapshot; return <><div className="workspace-warning">{tx(h.coverage)} · {tx(h.precision)}{" " + t("\u00B7 research cutoff") + " "}{tx(h.as_of)}<br />{h.notes.map((note,i)=><p key={i}>{tx(note)}</p>)}</div><h2 className="fed-section-title">{t("Macro evidence known by the cutoff")}</h2><div className="fed-macro-grid">{tx(h.macro.map(s => { const valid = s.points.filter(p => p.value != null); const latest = valid.at(-1); return <article key={s.series_id}><span>{tx(s.series_id)}</span><strong>{tx(latest ? number(latest.value) : 'Not Available')}</strong><p>{tx(s.units || s.status)}</p><small>{t("Observation") + " "}{tx(latest?.date || '—')}{" " + t("\u00B7 vintage") + " "}{tx(latest?.vintage_date || '—')}</small>{tx(s.provenance?.source_url && <a href={s.provenance.source_url} target="_blank" rel="noreferrer">{t("ALFRED source \u2197")}</a>)}<WorkspaceActions seriesIds={[s.series_id]} dataMode="vintage" asOf={h.as_of}/>{tx(latest && <Link href={'/historical-snapshot?series=' + s.series_id + '&as_of=' + h.as_of}>{t("Open vintage chart \u2192")}</Link>)}</article>; }))}</div><h2 className="fed-section-title">{t("Available documents \u00B7") + " "}{tx(h.documents.length)}</h2><p className="fed-note">{tx(h.excluded_document_count)}{" " + t("documents excluded by independent publication-time checks. Current-meeting materials appear only when published by the cutoff.")}</p><div className="fed-document-grid">{tx(h.documents.map(d => <Source key={d.id} doc={d}/>))}</div><h2 className="fed-section-title">{t("Known policy decision history")}</h2><div className="fed-nav">{tx(h.decisions.map(d => <Link key={d.meeting_id} href={'/fed/meetings/' + d.meeting_id}>{tx(d.meeting_id)} · {tx(number(d.lower))}–{tx(number(d.upper))}%</Link>))}</div>{exportButton}</>; })()}
+ </>)}
+ <footer className="fed-footer"><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noreferrer">{t("Federal Reserve official calendar \u2197")}</a><span>{t("Sources retain independent publication precision. No inferred future release times.")}</span></footer></ResearchShell>;
+}
+function DotChart({ option, dot, release }: {
+    option: Record<string, unknown>;
+    dot: DotResult;
+    release: string;
+}) { const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const number=uiNumber; const ref = useRef<ChartHandle>(null); return <><div className="fed-dot-scroll"><div className="fed-dot-canvas"><WorkspaceChart ref={ref} title={t("Federal funds rate \u00B7 anonymous participant projections")} label={t("SEP dot plot distributions")} footnote={t("Source: Federal Reserve accessible dot frequency table \u00B7 each dot = one participant \u00B7 not market probabilities")} option={option}/></div></div><div className="workspace-exports"><Button variant="outline" onClick={() => ref.current?.exportPng()}>{t("Download Dot Plot PNG")}</Button><Button variant="outline" onClick={() => download('sep-dots.csv', csv([['release', 'target_year', 'rate_midpoint', 'participants'], ...dot.items.map(d => [release, d.target_year, d.rate, d.participants])]), 'text/csv')}>{t("Download Dot Plot CSV")}</Button></div></>; }

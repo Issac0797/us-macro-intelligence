@@ -1,0 +1,102 @@
+{
+  "reviewed_on": "2026-11-19",
+  "publication_status": "AUTHORIZED — PREPARING FIRST PUSH",
+  "cloud_execution": "NOT TESTED",
+  "original_tests": {
+    "frontend": {
+      "passed": 63,
+      "failed": 0,
+      "skipped": 0
+    },
+    "backend_sqlite_postgresql": {
+      "passed": 237,
+      "failed": 0,
+      "skipped": 0
+    },
+    "total_passed": 300
+  },
+  "new_tests": {
+    "static_research_and_interactions": 13,
+    "schema_permission_adversarial": 8,
+    "security_negative_cases": 4,
+    "total_passed": 25
+  },
+  "clean_clone": {
+    "status": "PASS",
+    "os": "Windows",
+    "node": "24.22.3",
+    "env_file": false,
+    "full_frontend_dependencies_installed": false,
+    "backend_required": false,
+    "fred_key_required": false,
+    "production_build": "PASS",
+    "physical_routes": 10,
+    "generated_files": 94,
+    "validated_html_links": 360,
+    "source_manifest": "PASS",
+    "http_route_tests": "PASS",
+    "unknown_route_404": "PASS"
+  },
+  "snapshots": {
+    "status": "PASS",
+    "series": 13,
+    "observation_records_including_nulls": 17192,
+    "selected_fed_decisions": 5,
+    "all_values_compared_to_captured_agency_sources": "PASS",
+    "sha256": "96d85fa859060e38f6df3bde5c4b483d65c26a94fd80ca31030cc1bb98fd8372"
+  },
+  "security": {
+    "candidate_source_patterns": "PASS",
+    "candidate_artifact_patterns": "PASS",
+    "exact_private_values_in_candidate_files_or_git_blobs": false,
+    "original_git_objects_examined": 853,
+    "original_git_commit_objects": 0,
+    "reuse_original_git_for_public_release": "BLOCKED",
+    "local_database_password_rotation": "PASS",
+    "old_database_password_rejected": true
+  },
+  "vulnerabilities": {
+    "npm_frontend": 0,
+    "npm_showcase": 0,
+    "python_locked_packages": 40,
+    "python_known_vulnerabilities": 0,
+    "checked_on": "2026-11-18"
+  },
+  "browser": {
+    "overview_inflation_labor_yield_workspace_analytics_fed_sources": "PASS",
+    "language_en_zh": "PASS",
+    "light_dark_current_system": "PASS",
+    "operating_system_theme_change": "NOT TESTED",
+    "workspace_save_reload": "PASS",
+    "linked_zoom": "PASS",
+    "independent_cursor_motion_evidence": "PASS",
+    "curve_compare_dates": [
+      "2026-11-16",
+      "2020-01-02"
+    ],
+    "source_rows": 13,
+    "mobile_document_overflow": false,
+    "screenshots": [
+      "overview-en-light.jpg",
+      "workspace-zh-dark.jpg",
+      "workspace-linked-zoom.jpg",
+      "yield-curve-zh-dark.jpg",
+      "labor-mobile-zh-system.jpg"
+    ]
+  },
+  "cloudflare": {
+    "mode": "Git Integration",
+    "production_branch": "main",
+    "framework_preset": "None",
+    "root_directory": "/",
+    "build_command": "npm run build:showcase",
+    "output_directory": "showcase/out",
+    "environment": {
+      "NODE_VERSION": "24.22.3",
+      "SKIP_DEPENDENCY_INSTALL": "true",
+      "NEXT_TELEMETRY_DISABLED": "1"
+    },
+    "deployment_created": false
+  },
+  "total_tests_passed": 325
+}

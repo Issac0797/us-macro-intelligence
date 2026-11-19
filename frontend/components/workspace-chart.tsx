@@ -1,0 +1,22 @@
+"use client";
+import {forwardRef,useImperativeHandle,useMemo,useEffect,useRef} from 'react';
+import {use,type EChartsType} from 'echarts/core';
+import {LineChart,BarChart,HeatmapChart,ScatterChart} from 'echarts/charts';
+import {GridComponent,TooltipComponent,LegendComponent,DataZoomComponent,TitleComponent,MarkAreaComponent,MarkLineComponent,VisualMapComponent} from 'echarts/components';
+import {CanvasRenderer} from 'echarts/renderers';
+import {download} from '@/lib/workspace-utils';
+import {useResearchChart} from '@/lib/chart-presentation';
+import {useUI} from './presentation-provider';
+import {hasChartValues,availabilityMessage} from '@/lib/chart-availability';
+use([LineChart,BarChart,HeatmapChart,ScatterChart,VisualMapComponent,GridComponent,TooltipComponent,LegendComponent,DataZoomComponent,TitleComponent,MarkAreaComponent,MarkLineComponent,CanvasRenderer]);
+export type ChartHandle={exportPng:()=>void;getInstance:()=>EChartsType|null};
+export const WorkspaceChart=forwardRef<ChartHandle,{option:Record<string,unknown>;title:string;footnote:string;label:string;emptyReason?:string;onReady?:(chart:EChartsType)=>void|(()=>void);onPoint?:(event:any)=>void}>(function WorkspaceChart({option,title,footnote,label,emptyReason,onReady,onPoint},ref){
+ const {t}=useUI();
+ const combined=useMemo(()=>({animation:false,title:[{id:'heading',text:title,left:18,top:18,textStyle:{fontSize:14,fontWeight:500,overflow:'truncate'}},{id:'source',text:footnote,left:18,bottom:8,textStyle:{fontSize:10,fontWeight:400,lineHeight:15,width:650,overflow:'break'}}],grid:{left:80,right:45,top:110,bottom:120},tooltip:{trigger:'axis'},legend:{type:'scroll',top:52,left:15,right:15},dataZoom:[{type:'inside'},{type:'slider',bottom:72,height:18}],...option}),[option,title,footnote]);
+ const {container,chart,background}=useResearchChart(combined);
+ const events=useRef({onReady,onPoint});events.current={onReady,onPoint};
+ useEffect(()=>{const instance=chart.current;if(!instance)return;const cleanup=events.current.onReady?.(instance);const click=(e:any)=>events.current.onPoint?.(e);instance.on('click',click);return()=>{if(!instance.isDisposed?.())instance.off('click',click);cleanup?.()};},[chart]);
+ useImperativeHandle(ref,()=>({getInstance:()=>chart.current,exportPng(){const instance=chart.current;if(!instance)return;const url=instance.getDataURL({type:'png',pixelRatio:2,backgroundColor:background});const bytes=Uint8Array.from(atob(url.split(',')[1]),c=>c.charCodeAt(0));download('macro-research.png',new Blob([bytes],{type:'image/png'}));}}),[chart,background]);
+ const empty=!hasChartValues(option);
+ return <div className="workspace-chart chart-frame"><div ref={container} className="chart-canvas" role="img" aria-label={t(label)}/>{empty&&<div className="chart-empty" role="status">{t(emptyReason||availabilityMessage())}</div>}</div>;
+});
