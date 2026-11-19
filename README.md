@@ -9,6 +9,16 @@ An independent US macroeconomic research terminal and a self-contained static sh
 ![Static showcase — English light theme](docs/screenshots/overview-en-light.jpg)
 ![Four-panel workspace](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
 
+## Choose how to use it
+
+| Mode | Your own FRED API key? | Data and capabilities |
+| --- | --- | --- |
+| [Online demo](https://us-macro-intelligence.pages.dev/) or self-hosted static showcase | No | Reviewed historical snapshots, charts, search and exports; no live refresh |
+| Full local terminal with `fred_csv` (default) | No | Downloads supported ordinary observations from FRED's public CSV service; limited metadata and revision research |
+| Full local terminal with `fred_api` | **Yes** | FRED API observations and metadata, plus ALFRED vintage/revision research, subject to source availability |
+
+**Bring your own key for API mode.** The maintainer's personal credentials are not included or shared. Apply for a key under your own FRED account and keep it in your local backend configuration. The public demo has no key-entry form; adding a key to Cloudflare Pages will not enable full-terminal features.
+
 ## Research goals and features
 
 - The terminal's grouped navigation, selectable indicator cards, historical explorer, series brief, and observation ledger.
@@ -38,6 +48,8 @@ The separate `showcase/` entry reuses the terminal shell, grouped navigation, in
 Prerequisite: Node.js **24 LTS**, npm and Git. No Python, database or credentials are required to build the website.
 
 ```sh
+git clone https://github.com/Issac0797/us-macro-intelligence.git
+cd us-macro-intelligence
 npm run build:showcase
 ```
 
@@ -51,12 +63,40 @@ Visit [the local preview](http://127.0.0.1:3100). On Windows PowerShell use `npm
 
 ## Full local terminal on Windows
 
-Prerequisites: Docker Desktop running Linux containers. Keep an existing `.env`; never overwrite it.
+Prerequisites: Git and Docker Desktop running Linux containers. Clone the repository as above, then run the following from its root. Keep an existing `.env`; never overwrite it.
 
 ```powershell
 Copy-Item .env.example .env   # only if .env does not already exist
-# Edit POSTGRES_PASSWORD; use a unique local password.
-# Set FRED_API_KEY and DATA_PROVIDER=fred_api for metadata/vintage research.
+```
+
+Edit `.env` and replace `POSTGRES_PASSWORD` with a unique local database password. Docker Compose supplies the container database connection. For native development, also update `DATABASE_URL` as described in [LOCAL_DEVELOPMENT](docs/LOCAL_DEVELOPMENT.md).
+
+### Configure your data provider
+
+To start without an API key, keep these defaults:
+
+```dotenv
+DATA_PROVIDER=fred_csv
+FRED_API_KEY=
+```
+
+For full API metadata and ALFRED research:
+
+1. Sign in to your own FRED account and request a key using the [official FRED API key instructions](https://fred.stlouisfed.org/docs/api/api_key.html).
+2. Edit the existing entries in your local `.env`:
+
+   ```dotenv
+   DATA_PROVIDER=fred_api
+   FRED_API_KEY=your_key_here
+   ```
+
+   Replace the placeholder with your actual key. A database password and a FRED API key are separate credentials.
+
+### Start the terminal
+
+After choosing either provider, start the services and download data:
+
+```powershell
 docker compose up --build -d --wait
 docker compose exec -T backend python -m app.sync --full
 ```
@@ -64,6 +104,14 @@ docker compose exec -T backend python -m app.sync --full
 Open [the terminal](http://localhost:3000) or [API documentation](http://localhost:8000/docs). `fred_csv` is an explicit alternative for supported ordinary observations; full ALFRED/metadata features require your own API access. The key stays in the backend. Database storage is a named volume; routine `docker compose down` preserves it.
 
 For native Python/Node development and test commands see [LOCAL_DEVELOPMENT](docs/LOCAL_DEVELOPMENT.md). Portable paths are derived from the checkout, and no installed runtime, database or personal workspace is bundled.
+
+### Credentials and troubleshooting
+
+- `.env` is ignored by Git. Commit only the blank/example configuration in `.env.example`; keep real keys out of frontend code, `NEXT_PUBLIC_*` variables, screenshots, issues and static hosting settings.
+- If you see `FRED_API_KEY is required for fred_api`, provide your own key or explicitly switch to `DATA_PROVIDER=fred_csv`. API mode requires a key and does not silently fall back to CSV.
+- After changing `.env`, run `docker compose up --build -d --wait` again so the backend container picks up the new environment, then rerun the sync command. For a native process, restart the backend.
+- For rejected keys or rate limits, check your FRED account, key and applicable [API terms](https://fred.stlouisfed.org/docs/api/terms_of_use.html). A key does not guarantee availability of every series or historical vintage.
+- If a key is exposed, revoke/replace it through FRED and update your local `.env`; deleting it from the latest commit alone does not secure it. See [SECURITY](SECURITY.md).
 
 ## Data sources and rights
 
