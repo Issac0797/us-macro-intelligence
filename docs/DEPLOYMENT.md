@@ -35,7 +35,7 @@
 | Production automatic deployments | Enabled：`main` |
 | Preview branch deployments | 启用受信任的非 `main` 分支 |
 
-不要填写 FRED Key、数据库 URL、Cloudflare API Token 或个人环境变量。构建脚本按 `showcase/package-lock.json` 自行 `npm ci`，同步仓库中七份展示代码和许可文件，然后构建、扫描。不会安装/启动 Python 后端，不下载宏观数据，不访问 PostgreSQL，不读取 `.env`。无需 Pages Functions、Worker、R2、D1 或付费附加产品。
+不要填写 FRED Key、数据库 URL、Cloudflare API Token 或个人环境变量。构建脚本按 `showcase/package-lock.json` 自行 `npm ci`，同步仓库中终端共享组件、样式、字典和许可文件，然后构建、扫描。不会安装/启动 Python 后端，不下载宏观数据，不访问 PostgreSQL，不读取 `.env`。无需 Pages Functions、Worker、R2、D1 或付费附加产品。
 
 首次上线已获授权并成功完成：https://us-macro-intelligence.pages.dev/。已验证十条主要路由、真实 404、快照/许可字节一致及安全响应头。双语 README 通过 PR 更新正式链接；后续变更仍经必需 quality 门禁。
 

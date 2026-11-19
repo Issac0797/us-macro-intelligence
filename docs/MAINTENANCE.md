@@ -2,7 +2,7 @@
 
 ## 每次代码更新
 
-在功能分支修改；通过 PR 跑完整 `quality` 检查，保留后端回归。静态展示复用代码有变化时，构建脚本自动同步七份源文件；不要只修改生成的 `showcase/shared`。预览确认后合并到 `main`，由 Pages Git Integration 构建正式站。记录成功的 commit 与部署 URL；失败时保留旧站并修复或回滚。
+在功能分支修改；通过 PR 跑完整 `quality` 检查，保留后端回归。静态展示复用代码有变化时，构建脚本自动同步终端共享组件、样式和字典；不要只修改生成的 `showcase/shared`。预览确认后合并到 `main`，由 Pages Git Integration 构建正式站。记录成功的 commit 与部署 URL；失败时保留旧站并修复或回滚。
 
 提交前先 stage 已审核源码，运行 `python scripts/release/write_manifest.py` 更新文件清单与哈希，再 stage `docs/FILE_MANIFEST.json`。CI 会核对清单与仓库内容，避免遗漏来源文件或未说明的产物；不要 stage 私人运行时目录。
 

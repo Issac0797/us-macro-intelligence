@@ -2,11 +2,11 @@
 
 | 页面 / 能力 | 状态 | 交付行为与范围 |
 | --- | --- | --- |
-| Overview `/` | PASS | 官方 CPI 同比、失业率、非农月度变化、10Y 指标卡；真实观测日期；两幅历史图 |
-| Inflation `/inflation/` | PASS | CPI / Core CPI 同比，原始指数与环比可在 Workspace 选择 |
-| Labor `/labor/` | PASS | 失业率及月度非农变化，保留百分比与千人原单位 |
+| Overview `/` | PASS | 七张官方指标卡可切换历史图、简报和观测明细，显示原始观测日期 |
+| Inflation `/inflation/` | PASS | CPI 和核心 CPI 可在页面内切换同比、环比及原始指数 |
+| Labor `/labor/` | PASS | 失业率和非农就业可切换历史视图，保留百分比与千人原单位 |
 | Treasury Yield Curve `/yield-curve/` | PASS | 八个名义国债期限、两日期比较、完整共同观测日期选择、10Y−2Y 历史利差 |
-| Chart Workspace `/workspace/` | PASS | 四图、独立系列/口径、统一 UTC 时间轴、缩放重置、浏览器配置与 CSV/JSON/PNG 导出 |
+| Chart Workspace `/workspace/` | PASS | 指标页可带入序列、范围和转换方式。四图独立配置，支持UTC 联动、缩放、浏览器保存及 CSV/JSON/PNG 导出 |
 | Macro Analytics `/analytics/` | PARTIAL | 浏览器内原始值/同比/环比/绝对变化与按日期匹配 Pearson；原项目其他分析保留在本地完整版 |
 | Fed Policy `/fed/` | PARTIAL | 五个已核验历史决策及 DFF 图；明确不提供完整决策年表、SEP、点阵图或实时政策判断 |
 | 来源与许可 `/sources/` | PASS | 13 系列逐项归因、覆盖/单位/原生编号、许可链接、Schema/快照/软件声明下载 |
@@ -18,6 +18,6 @@
 | 移动适配 | PASS | 390px 视口下就业页图表正常，文档宽度等于可视宽度，无页面横向溢出；Sources 表格局部滚动 |
 | 实时数据 / 后台日历 / ALFRED / 数据库写入 | BLOCKED in static mode | 页面明确列为限制；未加入后端调用或伪实时回退，本地完整版仍保留 |
 
-使用 `PresentationProvider`、`Preferences`、`chart-presentation`、`chart-theme`、`presentation` 和双语词典的原始源码；构建时复制到忽略的共享目录，避免 Cloudflare 安装整个后端或完整版依赖。计算先按完整原生历史完成，再筛选展示范围；不前填、不插值，不将百分率误算为通胀增速。
+终端外框、导航、指标卡、主题和双语偏好组件由两个版本共用。构建时同步到忽略的 `showcase/shared`。数据转换先基于完整原生历史计算，再按所选范围筛选。缺失值保留为空。
 
 Business Cycle 页面明确标注未获许可数据和动态分析限制；About / Data Status 显示快照状态。系统主题实际切换仍为 NOT TESTED，尚未完成的导出/搜索浏览器验收为 PARTIAL。

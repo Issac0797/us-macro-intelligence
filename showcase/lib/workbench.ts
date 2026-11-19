@@ -1,4 +1,5 @@
 import {supported,type Series,type Transform,type Workspace,type Snapshot,type Point} from './research.ts';
+import {initialTransform, rangePresets, rangeStart, type RangePreset} from './explorer.ts';
 export type Panel={series:string;transform:Transform};
 export type Workbench={version:2;panels:Panel[];start:string;end:string;linked:boolean};
 export const initialWorkbench:Workbench={version:2,panels:[{series:'CPIAUCSL',transform:'yoy'},{series:'UNRATE',transform:'raw'},{series:'DGS2',transform:'raw'},{series:'DGS10',transform:'raw'}],start:'2021-01-01',end:'',linked:true};
@@ -15,6 +16,22 @@ export function restoreWorkbench(raw:string|null,series:Series[],legacy?:Workspa
   result.start=legacy.start;result.end=legacy.end;result.linked=legacy.linked;
  }
  return result;
+}
+
+export function applyWorkspaceLink(config: Workbench, query: URLSearchParams, series: Series[]): Workbench {
+ const first = series.find(item => item.id === query.get("series"));
+ if (!first) return config;
+ const comparison = series.find(item => item.id !== first.id && item.id === query.get("compare"));
+ const requestedMethod = query.get("transform") as Transform | null;
+ const method = requestedMethod && supported(first, requestedMethod) ? requestedMethod : initialTransform(first.id);
+ const panels = config.panels.slice();
+ panels[0] = { series: first.id, transform: method };
+ if (comparison) panels[1] = { series: comparison.id, transform: initialTransform(comparison.id) };
+ const range = query.get("range") as RangePreset | null;
+ if (!range || !rangePresets.includes(range)) return { ...config, panels };
+ if (range === "ALL") return { ...config, panels, start: "", end: "" };
+ const end = comparison && comparison.coverage.end > first.coverage.end ? comparison.coverage.end : first.coverage.end;
+ return { ...config, panels, start: rangeStart(end, range), end };
 }
 export function commonDomain(snapshot:Snapshot,start:string,end:string):[number,number]{
  const begins=snapshot.series.map(s=>s.coverage.start).sort(),ends=snapshot.series.map(s=>s.coverage.end).sort();

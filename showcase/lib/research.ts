@@ -2,7 +2,7 @@ export type Point = {date:string;value:number|null};
 export type Series = {id:string;native_id:string;title:string;title_zh:string;units:string;frequency:'monthly'|'daily';seasonal_adjustment:string;source:string;source_url:string;download_url:string;notice:string;policy_url:string;generated_at:string;maturity_months?:number;coverage:{start:string;end:string;count:number};observations:Point[]};
 export type Snapshot = {schema_version:1;generated_at:string;is_live:false;revision_basis:string;series:Series[];fed_decisions:{date:string;lower:number;upper:number;units:string;source_url:string;notice:string}[]};
 export type Transform = 'raw'|'yoy'|'mom'|'absolute_change';
-export function supported(s:Series,t:Transform){return t==='raw'||t==='absolute_change'||(s.frequency==='monthly'&&s.units!=='Percent');}
+export function supported(s:Series,t:Transform){return t==='raw'||t==='absolute_change'||((t==='yoy'||t==='mom')&&s.frequency==='monthly'&&s.units!=='Percent');}
 export function transform(s:Series,t:Transform):Point[]{
  if(!supported(s,t))throw new Error('Unsupported transformation');
  const byDate=new Map(s.observations.map(p=>[p.date,p.value]));

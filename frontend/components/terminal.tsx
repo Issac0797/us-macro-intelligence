@@ -5,14 +5,13 @@ import {requestMetadata} from "@/lib/query-client";
 import {useRevalidation} from "@/lib/use-revalidation";
 import {availabilityMessage} from '@/lib/chart-availability';
 import {SyncStatus} from "./sync-status";
-import {MainNavigation} from "./main-navigation";
-import {Preferences} from "./preferences";
+import {TerminalFrame} from "./terminal-frame";
+import {TerminalMetric} from "./terminal-metric";
 import {useUI} from "./presentation-provider";
 import {request} from "@/lib/workspace-utils";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
-import { Activity, CalendarDays, ArrowUpRight, BarChart3, BookOpen, ChevronRight, CircleAlert, Database, ExternalLink, Globe2, Landmark, LayoutDashboard, LoaderCircle, PanelLeftClose, RefreshCw, TrendingUp, Users } from "lucide-react";
+import { CalendarDays, ArrowUpRight, BarChart3, BookOpen, CircleAlert, Database, ExternalLink, Landmark, LayoutDashboard, LoaderCircle, RefreshCw, TrendingUp, Users } from "lucide-react";
 import { ReleaseWidgets } from "@/components/release-widgets";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,26 +38,6 @@ const preferred = ["CES0500000003", "JTSJOL", "RSAFS", "INDPRO", "CPIAUCSL", "CP
 const api=<T,>(path:string,signal:AbortSignal)=>request<T>(path,'GET',undefined,signal);
 function timestamp(value: string | null | undefined) {
     return value ? new Date(value).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) + " UTC" : "Not collected";
-}
-function Sparkline({ card }: {
-    card: MacroCard;
-}) {
-    const { t, tx, locale, date: uiDate, number: uiNumber } = useUI(); const timestamp=(v:string|null|undefined)=>uiDate(v,"UTC",true)+" UTC";
-    const values = card.history.map(p => p.value);
-    const valid = values.filter((v): v is number => v !== null);
-    if (valid.length < 2)
-        return <span className="spark-empty">{t("Awaiting history")}</span>;
-    const min = Math.min(...valid), max = Math.max(...valid), spread = max - min || 1;
-    let path = "", gap = true;
-    values.forEach((v, i) => {
-        if (v == null) {
-            gap = true;
-            return;
-        }
-        path += `${gap ? "M" : "L"}${i / Math.max(values.length - 1, 1) * 140},${38 - (v - min) / spread * 32} `;
-        gap = false;
-    });
-    return <svg className="sparkline" viewBox="0 0 140 44" aria-hidden="true"><path d={path} fill="none" stroke="currentColor" strokeWidth="1.8"/></svg>;
 }
 export function Terminal({ section }: {
     section: string;
@@ -124,27 +103,21 @@ export function Terminal({ section }: {
     const providers = Array.from(new Set(cards.map(c => c.provider).filter(Boolean)));
     const populated = cards.filter(c => c.value !== null).length;
     const isReady = overview && !overviewError && overview.data_status === "ready";
-    return <div className={cn("terminal", collapsed && "rail-collapsed")}>
-    <a className="skip-link" href="#main">{t("Skip to research")}</a>
-    <aside className="sidebar">
-      <Link href="/" className="brand"><span className="brand-symbol"><Activity size={22}/></span><span className="brand-text">{t("MACRO")}<span>{t("INTELLIGENCE")}</span></span></Link>
-      <div className="workspace-label"><span className="status-dot"/>{t("U.S. RESEARCH TERMINAL")}<span className="version">01</span></div>
-      <div className="nav-caption">{t("WORKSPACE")}</div>
-      <MainNavigation/>
-      <div className="sidebar-bottom"><div className="source-box"><Database size={17}/><div><strong>{t("Built on public data")}</strong><p>{t("Federal Reserve Economic Data")}</p><a href="https://fred.stlouisfed.org/" target="_blank" rel="noreferrer">{t("Explore FRED") + " "}<ExternalLink size={11}/></a></div></div><div className="local-label"><span className="status-dot"/>{t("LOCAL WORKSPACE")}<span>{t("v0.1.0")}</span></div></div>
-    </aside>
-    <div className="workspace">
-      <header className="topbar"><Preferences/><div className="breadcrumb"><Button variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)} aria-label={t("Toggle navigation")}><PanelLeftClose size={17}/></Button><span>{t("Research workspace")}</span><ChevronRight size={13}/><strong>{tx(page.label)}</strong></div><div className="topbar-right"><span className="region"><Globe2 size={14}/>{t("UNITED STATES")}</span><span className={cn("connection", isReady && "connected")}><span className="status-dot"/>{tx(busy ? "CONNECTING" : overviewError ? "SERVICE OFFLINE" : isReady ? "DATA CONNECTED" : "DATA INCOMPLETE")}</span></div></header>
-      <main id="main">
+    return <TerminalFrame label={tx(page.label)} collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)}
+      ready={!!isReady} status={tx(busy ? "CONNECTING" : overviewError ? "SERVICE OFFLINE" : isReady ? "DATA CONNECTED" : "DATA INCOMPLETE")}
+      sidebarFooter={<><div className="source-box"><Database size={17}/><div><strong>{t("Built on public data")}</strong><p>{t("Federal Reserve Economic Data")}</p><a href="https://fred.stlouisfed.org/" target="_blank" rel="noreferrer">{t("Explore FRED") + " "}<ExternalLink size={11}/></a></div></div><div className="local-label"><span className="status-dot"/>{t("LOCAL WORKSPACE")}<span>{t("v0.1.0")}</span></div></>}
+      statusFooter={<><span><span className="status-dot"/>{tx(overviewError ? "DATA SERVICE UNAVAILABLE" : "U.S. MACRO INTELLIGENCE")}<span className="strip-divider"/>{t("ITERATION 01")}</span><span>{t("View generated:") + " "}{tx(timestamp(overview?.generated_at))}</span></>}>
         <div className="page-heading"><div><div className="eyebrow">{tx(page.kicker)}</div><h1>{tx(page.title)}</h1><p>{tx(page.description)}</p></div><Button variant="outline" onClick={() => refreshData()} disabled={busy} title={t("Reload the database view; this does not trigger a FRED sync")}><RefreshCw size={14} className={busy ? "animate-spin" : ""}/>{t("Refresh view")}</Button></div>
         <RefreshStatus cached={requestMetadata(overview)?.cacheHit} busy={busy} error={overviewError} hasData={!!overview} lastFetch={lastFetch} retry={refreshData}/>
         <>{active&&<WorkspaceActions seriesIds={[active.series.id]} observationDate={active.observation_date||undefined}/>}</><div className="data-strip"><div><span className={cn("status-dot", populated === 0 && "muted-dot")}/><strong>{tx(providers.length ? providers.map(p => p === "fred_api" ? "FRED API" : "FRED public CSV").join(" + ") : "FRED DATA")}</strong><span className="strip-divider"/>{t("Native observations \u00B7 Validated transformations")}</div><span>{tx(populated)} / {tx(cards.length || "—")}{" " + t("series available")}</span></div>
 
-        {tx(busy && !overview ? <div className="metrics-grid">{tx(Array.from({ length: 4 }, (_, i) => <div className="skeleton metric-skeleton" key={i}/>))}</div> : <div className="metrics-grid">{tx(cards.map(card => <button key={card.series.id} className={cn("metric-card", active?.series.id === card.series.id && "selected")} onClick={() => choose(card)} aria-pressed={active?.series.id === card.series.id}>
-          <div className="metric-top"><span>{tx(card.series.short_name)}</span><span className="series-code">{tx(card.series.id)}</span></div>
-          <div className="metric-middle"><div className="metric-value">{tx(number(card.value, card.series.id === "PAYEMS" ? 0 : 2))}<span>{tx(unitSuffix(card.units))}</span></div><Sparkline card={card}/></div>
-          <div className="metric-bottom"><span>{tx(transformNames[card.transform])}{tx(card.stale && <em title={t("Observation is older than the expected reporting cadence")}>{" " + t("\u00B7 Delayed")}</em>)}</span><span className="metric-date">{tx(card.observation_date?.slice(0, card.series.frequency === "daily" ? 10 : 7) || "No data")}</span></div>
-        </button>))}</div>)}
+        {tx(busy && !overview ? <div className="metrics-grid">{tx(Array.from({ length: 4 }, (_, i) => <div className="skeleton metric-skeleton" key={i}/>))}</div> : <div className="metrics-grid">{cards.map(card => <TerminalMetric
+          key={card.series.id} id={tx(card.series.id)} label={tx(card.series.short_name)}
+          value={tx(number(card.value, card.series.id === "PAYEMS" ? 0 : 2))} unit={tx(unitSuffix(card.units))}
+          history={card.history.map(p => p.value)} selected={active?.series.id === card.series.id} onSelect={() => choose(card)}
+          date={tx(card.observation_date?.slice(0, card.series.frequency === "daily" ? 10 : 7) || "No data")}
+          method={<>{tx(transformNames[card.transform])}{tx(card.stale && <em title={t("Observation is older than the expected reporting cadence")}>{" " + t("\u00B7 Delayed")}</em>)}</>}
+        />)}</div>)}
         {tx(!busy && overview?.data_status === "empty" && <div className="empty-box"><Database size={26}/><h2>{t("Your research workspace is ready")}</h2><p>{t("Import observations from FRED to populate these series. Run the initialization command in the README, then refresh this view.")}</p></div>)}
         {tx(active && <>
           <div className="research-grid"><Card className="history-panel"><div className="panel-heading"><div><div className="panel-kicker">{t("HISTORICAL EXPLORER")}</div><h2>{tx(active.series.short_name)}<span className="frequency-tag">{tx(active.series.frequency)}</span></h2></div><a href={active.series.source_url} target="_blank" rel="noreferrer" className="source-link">{t("View source")}<ExternalLink size={13}/></a></div>
@@ -159,8 +132,5 @@ export function Terminal({ section }: {
         </>)}
         {tx(section === "overview" && <><SyncStatus epoch={refresh}/><ReleaseWidgets refreshEpoch={refresh} /></>)}
         <footer className="footer"><span><Database size={13}/>{t("Source: FRED, Federal Reserve Bank of St. Louis. Original agencies retain data ownership.")}</span><span>{t("Observation dates \u2260 release dates. Release timestamps unavailable.")}</span></footer>
-      </main>
-      <div className="statusbar"><span><span className="status-dot"/>{tx(overviewError ? "DATA SERVICE UNAVAILABLE" : "U.S. MACRO INTELLIGENCE")}<span className="strip-divider"/>{t("ITERATION 01")}</span><span>{t("View generated:") + " "}{tx(timestamp(overview?.generated_at))}</span></div>
-    </div>
-  </div>;
+  </TerminalFrame>;
 }

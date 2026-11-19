@@ -11,7 +11,8 @@ An independent US macroeconomic research terminal and a self-contained static sh
 
 ## Research goals and features
 
-- Overview; inflation and labor; Treasury term structure and dated curve comparison.
+- The terminal's grouped navigation, selectable indicator cards, historical explorer, series brief, and observation ledger.
+- Overview, inflation, labor, and Treasury term structure with dated curve comparison.
 - Linked ECharts cursor/zoom, date filters, native units, CPI YoY/MoM, and absolute changes.
 - Four-panel UTC-aligned workspace, browser-only configuration persistence, CSV/JSON/PNG export and Ctrl+K search.
 - Descriptive exact-date Pearson correlation; no interpolation or synthetic observations.
@@ -30,7 +31,7 @@ Data refresh (manual): original-agency sources → whitelist/schema → snapshot
 Automatic deployment:    GitHub main → Cloudflare Pages Git Integration
 ```
 
-The separate `showcase/` entry reuses the terminal presentation provider, chart theming, locale dictionaries and preferences through `scripts/release/sync-shared.mjs`. It has no API proxy, request cookies, server actions, database connection, background worker or private API key. Each public route exports a physical `index.html`; `404.html` preserves genuine unknown-route errors.
+The separate `showcase/` entry reuses the terminal shell, grouped navigation, indicator cards, theme, and bilingual preferences through `scripts/release/sync-shared.mjs`. The public explorer reads the reviewed snapshot in the browser and can carry its series, time range, and transformation into Chart Workspace. Each public route exports a physical `index.html` with a dedicated `404.html` for unknown routes.
 
 ## Quick start: static showcase
 

@@ -18,7 +18,9 @@ if __name__=='__main__':
         for route in ['', 'inflation','labor','yield-curve','workspace','analytics','fed','sources','about','business-cycle']:
             for suffix in ['/', '/index.html'] if route else ['/']:
                 with urlopen(f'http://127.0.0.1:{server.server_port}/{route}{suffix}'.replace('//index','/index')) as r:
-                    assert r.status==200 and b'Static Showcase' in r.read()
+                    html = r.read()
+                    assert r.status == 200 and b'Public Research Terminal' in html, f'Missing terminal title on {route or "/"}'
+                    assert b'id="terminal-sidebar"' in html and b'SNAPSHOT \xc2\xb7 NOT LIVE' in html, f'Missing terminal shell on {route or "/"}'
         for asset in ['data/snapshot.json','data/licenses.json','data/snapshot.schema.json','data/third-party-notices.txt','_headers']:
             with urlopen(f'http://127.0.0.1:{server.server_port}/{asset}') as r:
                 assert r.status==200

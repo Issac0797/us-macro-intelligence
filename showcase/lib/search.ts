@@ -1,5 +1,5 @@
 import type {Series} from './research';
-export const publicPages=[['','Overview','总览'],['inflation','Inflation','通胀'],['labor','Labor','就业'],['yield-curve','Treasury Yield Curve','国债收益率曲线'],['workspace','Chart Workspace','图表工作区'],['analytics','Macro Analytics','宏观分析'],['business-cycle','Business Cycle · static limits','经济周期 · 静态限制'],['fed','Fed Policy','美联储政策'],['sources','Sources & licenses','来源与许可'],['about','About / Data Status','关于 / 数据状态']];
+export const publicPages=[['','Overview','总览'],['inflation','Inflation','通胀'],['labor','Labor Market','劳动力市场'],['yield-curve','Treasury Yield Curve','国债收益率曲线'],['workspace','Chart Workspace','图表工作区'],['analytics','Macro Analytics','宏观分析'],['business-cycle','Business Cycle','经济周期'],['fed','Fed Policy','美联储政策'],['sources','Sources & licenses','来源与许可'],['about','About / Data Status','关于 / 数据状态']];
 export function searchPublic(query:string,series:Series[],zh:boolean){
  const q=query.trim().toLowerCase();
  const pages=publicPages.map(([route,en,cn])=>({label:zh?cn:en,detail:route||'overview',url:`/${route}${route?'/':''}`,terms:en+' '+cn+' '+route}));
