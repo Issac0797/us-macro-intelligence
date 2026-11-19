@@ -1,9 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {restoreWorkbench,commonDomain,exactCursor,chartExport,exportCsv,validDate,visiblePoints} from '../lib/workbench.ts';
+import {applyWorkspaceLink,restoreWorkbench,commonDomain,exactCursor,chartExport,exportCsv,validDate,visiblePoints} from '../lib/workbench.ts';
+import {rangeStart} from '../lib/explorer.ts';
 import {searchPublic} from '../lib/search.ts';
 import {readFileSync} from 'node:fs';
 const snapshot=JSON.parse(readFileSync(new URL('../public/data/snapshot.json',import.meta.url)));
+test('explorer links preserve a reviewed series, compatible transform, comparator and snapshot-relative range', () => {
+ const config = restoreWorkbench(null, snapshot.series);
+ const linked = applyWorkspaceLink(config, new URLSearchParams('series=CPILFESL&transform=mom&compare=CPIAUCSL&range=3Y'), snapshot.series);
+ assert.deepEqual(linked.panels.slice(0, 2), [{ series: 'CPILFESL', transform: 'mom' }, { series: 'CPIAUCSL', transform: 'yoy' }]);
+ const end = snapshot.series.find(item => item.id === 'CPILFESL').coverage.end;
+ assert.equal(linked.end, end);
+ assert.equal(linked.start, rangeStart(end, '3Y'));
+ assert.equal(config.panels[0].series, 'CPIAUCSL');
+ const invalid = applyWorkspaceLink(config, new URLSearchParams('series=CPILFESL&transform=unknown&compare=PCE&range=999Y'), snapshot.series);
+ assert.equal(invalid.panels[0].transform, 'yoy');
+ assert.deepEqual(invalid.panels.slice(1), config.panels.slice(1));
+ assert.equal(invalid.start, config.start);
+ assert.equal(applyWorkspaceLink(config, new URLSearchParams('series=PCE&compare=DGS10'), snapshot.series), config);
+});
+test('snapshot-relative presets clamp leap days and offer full native coverage', () => {
+ assert.equal(rangeStart('2024-02-29', '1Y'), '2023-02-28');
+ assert.equal(rangeStart('2024-02-29', 'ALL'), '');
+});
 test('legacy two-panel configuration migrates without losing selected series, date window or units',()=>{
  const c=restoreWorkbench(null,snapshot.series,{version:1,first:'DGS10',second:'DGS2',transform:'absolute_change',start:'2023-01-01',end:'2024-01-01',linked:false});
  assert.equal(c.panels.length,4);assert.deepEqual(c.panels.slice(0,2),[{series:'DGS10',transform:'absolute_change'},{series:'DGS2',transform:'absolute_change'}]);assert.equal(c.linked,false);assert.equal(c.start,'2023-01-01');
