@@ -43,13 +43,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 10018,
-      "sha256": "08ca2d7e87195cd826245c5d58e666548dc70db118d010268286dbf1f0453576"
+      "bytes": 11091,
+      "sha256": "4ec17d255afead9d1624665ff77e6b41da777d9ed06e705ae0d67b77e7988eef"
     },
     {
       "path": "README.zh-CN.md",
-      "bytes": 8786,
-      "sha256": "f19270467973cea89f278aad8a8dedcde4b177bab564caf3c4b2f41d4cb87c90"
+      "bytes": 9718,
+      "sha256": "d2fae9714d15c9f43e7d09e2db663b9215bd3973b5f2c92e43359c80a92694eb"
     },
     {
       "path": "SECURITY.md",
@@ -615,6 +615,16 @@
       "path": "docs/screenshots/labor-mobile-zh-system.jpg",
       "bytes": 31355,
       "sha256": "920a1cda1ce38d95886c17b75774795106163b1ec4f2b615fa2a64f1831cac54"
+    },
+    {
+      "path": "docs/screenshots/local-terminal/overview-zh-light.jpg",
+      "bytes": 184241,
+      "sha256": "d32b22c11959db4650a74ed9441e9d96262d2a83140569ecaa357e579147a5db"
+    },
+    {
+      "path": "docs/screenshots/local-terminal/workspace-en-dark.jpg",
+      "bytes": 204179,
+      "sha256": "974722e649e251ab501a57ff679ca5fd87865b3a4dec719120707f94ea5958ea"
     },
     {
       "path": "docs/screenshots/overview-en-light.jpg",
