@@ -6,8 +6,22 @@
 
 **Public Preview** · [在线体验](https://us-macro-intelligence.pages.dev/) · [GitHub CI](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339)。静态网站通过 Cloudflare Pages Git Integration 自动部署，不托管实时后端；实际状态见 [发布报告](docs/ITERATION9_PUBLIC_RELEASE.md)。
 
+## 静态展示版
+
 ![英文浅色总览](docs/screenshots/overview-en-light.jpg)
 ![四图工作区](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
+
+## 本地完整版实机截图
+
+以下截图摄于 **2026 年 11 月 21 日（Asia/Shanghai）**，已重新启动本地 Next.js 前端、FastAPI 后端与 PostgreSQL 数据库。画面读取本机 FRED/ALFRED 数据，与线上静态演示版分开。截图时间和前端读取时间不代表来源数据当天发布或更新。API 功能需要使用者在本地配置自己的密钥，启动步骤见下文。
+
+**中文总览 · 浅色主题。** 展示宏观指标卡、经济日历入口、数据来源和历史观测。
+
+![本地完整版：中文浅色总览](docs/screenshots/local-terminal/overview-zh-light.jpg)
+
+**英文图表工作区 · 深色主题。** 展示核心 PCE 同比及年化动量、共享日期范围与图表控制。截图使用独立浏览器会话和未保存的工作区。
+
+![本地完整版：英文深色研究工作区](docs/screenshots/local-terminal/workspace-en-dark.jpg)
 
 ## 选择使用方式
 

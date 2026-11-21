@@ -6,8 +6,22 @@ An independent US macroeconomic research terminal and a self-contained static sh
 
 **Public Preview** · [Online demo](https://us-macro-intelligence.pages.dev/) · [GitHub CI](https://github.com/Issac0797/us-macro-intelligence/actions/runs/44430086339). The static website uses Cloudflare Pages Git Integration; no live backend is hosted. See [release status](docs/ITERATION9_PUBLIC_RELEASE.md) for actual verification results.
 
+## Static showcase
+
 ![Static showcase — English light theme](docs/screenshots/overview-en-light.jpg)
 ![Four-panel workspace](docs/screenshots/release/four-linked-cursor-zh-light.jpg)
+
+## Full local terminal
+
+Actual screenshots captured on **November 21, 2026 (Asia/Shanghai)** after restarting the local Next.js frontend, FastAPI backend and PostgreSQL database. These views use the local FRED/ALFRED data and are separate from the hosted static demo. Capture time and frontend fetch time do not imply that source observations were released or refreshed that day. Run the terminal locally with your own API key for API features; see the setup instructions below.
+
+**Chinese overview · light theme.** Indicator cards, economic calendar navigation, source attribution and historical observations.
+
+![Full local terminal — Chinese overview, light theme](docs/screenshots/local-terminal/overview-zh-light.jpg)
+
+**English chart workspace · dark theme.** Core PCE year-over-year and annualized momentum, with a shared date range and chart controls. The capture uses a fresh browser session and an unsaved workspace.
+
+![Full local terminal — English research workspace, dark theme](docs/screenshots/local-terminal/workspace-en-dark.jpg)
 
 ## Choose how to use it
 
